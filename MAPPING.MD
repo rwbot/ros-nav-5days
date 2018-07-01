@@ -37,11 +37,13 @@ Another of the packages available in the ROS Navigation Stack is the  **map_serv
 
 When you request the map_saver to save the current map, the map data is saved into two files: one is the YAML file, which contains the map metadata and the image name, and second is the image itself, which has the encoded data of the occupancy grid map.
 ```bash
-rosrun map_server map_saver -f name_of_map
+rosrun map_server map_saver -f map_name
 ```
-This command will get the map data from the map topic, and write it out into 2 files, **name_of_map.pgm** and **name_of_map.yaml**.
+This command will get the map data from the map topic, and write it out into 2 files, **map_name.pgm** and **map_name.yaml**.
 
+>**Note 1**: The -f attribute allows you to give the files a custom name. By default (if you don't use the -f attribute), the names of the file would be map.pgm and map.yaml.
 
+**Note 2**: Remember that, in order to be able to visualize the files generated through RViz, these files must be at the  **/home/user/catkin_ws/src**  directory. The files will be initially saved in the directory where you execute the command.
 
 
 
@@ -85,5 +87,5 @@ This command will get the map data from the map topic, and write it out into 2 f
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU5NDA1MTI2NywxNDkzODU0Njc1XX0=
+eyJoaXN0b3J5IjpbLTE5Nzk5NTA5NzMsMTQ5Mzg1NDY3NV19
 -->
