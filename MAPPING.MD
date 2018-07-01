@@ -44,9 +44,10 @@ This command will get the map data from the map topic, and write it out into 2 f
 >**Note 1**: The -f attribute allows you to give the files a custom name. By default (if you don't use the -f attribute), the names of the file would be map.pgm and map.yaml.
 
 >**Note 2**: Remember that, in order to be able to visualize the files generated through RViz, these files must be at the  **/home/user/catkin_ws/src**  directory. The files will be initially saved in the directory where you execute the command.
->
-![enter image description here](https://github.com/rwbot/ros-nav-5days/blob/master/images/map.png?raw=true)
 
+* Map.PGM
+![enter image description here](https://github.com/rwbot/ros-nav-5days/blob/master/images/map.png?raw=true)
+* Map.YAML
 ![
 ](https://github.com/rwbot/ros-nav-5days/blob/master/images/my_map_txt.png?raw=true)
 
@@ -89,6 +90,6 @@ This command will get the map data from the map topic, and write it out into 2 f
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzU3ODYxMjk2LC0xNzk2ODU4ODI3LDE0OT
-M4NTQ2NzVdfQ==
+eyJoaXN0b3J5IjpbLTEzNjcxMDIwNywtMTc5Njg1ODgyNywxND
+kzODU0Njc1XX0=
 -->
