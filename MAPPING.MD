@@ -43,7 +43,7 @@ This command will get the map data from the map topic, and write it out into 2 f
 
 >**Note 1**: The -f attribute allows you to give the files a custom name. By default (if you don't use the -f attribute), the names of the file would be map.pgm and map.yaml.
 
-**Note 2**: Remember that, in order to be able to visualize the files generated through RViz, these files must be at the  **/home/user/catkin_ws/src**  directory. The files will be initially saved in the directory where you execute the command.
+>**Note 2**: Remember that, in order to be able to visualize the files generated through RViz, these files must be at the  **/home/user/catkin_ws/src**  directory. The files will be initially saved in the directory where you execute the command.
 
 
 
@@ -87,5 +87,5 @@ This command will get the map data from the map topic, and write it out into 2 f
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Nzk5NTA5NzMsMTQ5Mzg1NDY3NV19
+eyJoaXN0b3J5IjpbLTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV19
 -->
