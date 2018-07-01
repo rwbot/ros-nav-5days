@@ -51,7 +51,9 @@ This command will get the map data from the map topic, and write it out into 2 f
 ![
 ](https://github.com/rwbot/ros-nav-5days/blob/master/images/my_map_txt.png?raw=true)
 
-
+The YAML File generated will contain the 6 following fields: 
+* image: Name of the file containing the image of the generated Map. 
+* resolution: Resolution of the map (in meters/pixel). origin: Coordinates of the lower-left pixel in the map. This coordinates are given in 2D (x,y). The third value indicates the rotation. If there's no rotation, the value will be 0. occupied_thresh: Pixels which have a value greater than this value will be considered as a completely occupied zone. free_thresh: Pixels which have a value smaller than this value will be considered as a completely free zone. negate: Inverts the colours of the Map. By default, white means completely free and black means completely occupied.
 
 
 
@@ -90,6 +92,6 @@ This command will get the map data from the map topic, and write it out into 2 f
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNjcxMDIwNywtMTc5Njg1ODgyNywxND
-kzODU0Njc1XX0=
+eyJoaXN0b3J5IjpbMjAzNTM3NTY3LC0xMzY3MTAyMDcsLTE3OT
+Y4NTg4MjcsMTQ5Mzg1NDY3NV19
 -->
