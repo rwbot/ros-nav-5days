@@ -131,9 +131,14 @@ NOTE:
 $$$
 
 ## slam_gmapping node
+[Gmapping Parameters](http://wiki.ros.org/gmapping)
 
+### General Parameters[](https://i-0dfe0fc43dcf0c827.robotigniteacademy.com/jupyter/notebooks/Mapping.ipynb#General-Parameters)
 
-
+-   **base_frame (default: "base_link")**: Indicates the name of the frame attached to the mobile base.
+-   **map_frame (default: "map")**: Indicates the name of the frame attached to the map.
+-   **odom_frame (default: "odom")**: Indicates the name of the frame attached to the odometry system.
+-   **map_update_interval (default: 5.0)**: Sets the time (in seconds) to wait until update the map.
 
 
 
@@ -156,8 +161,8 @@ $$$
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTk5MDUwNDgxLC0yMTA1Njc2MjgxLC05MD
-E1MTg1NTIsLTU4NTk4OTY5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1
-OTEsLTEzNjcxMDIwNywtMTc5Njg1ODgyNywxNDkzODU0Njc1XX
-0=
+eyJoaXN0b3J5IjpbLTE1OTMyODk0NjMsLTIxMDU2NzYyODEsLT
+kwMTUxODU1MiwtNTg1OTg5Njk2LC0xNzk1MzU1ODQ4LDg3MTM1
+NDU5MSwtMTM2NzEwMjA3LC0xNzk2ODU4ODI3LDE0OTM4NTQ2Nz
+VdfQ==
 -->
