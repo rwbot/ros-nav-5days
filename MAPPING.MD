@@ -141,12 +141,78 @@ Don't you think so? If we don't provide this information to the robot, when the 
 First, we'll define two frames (coordinate frames), one at the center of the laser and another one at the center of the robot. For navigation, it is important that the center of the robot is placed at the  **rotational center**  of the robot. We'll name the laser frame as  _base_laser_  and the robot frame as  _base_link_.
 
 Here you can see an scheme of how it would look like:
+![](https://github.com/rwbot/ros-nav-5days/blob/master/images/tf_diagram.png?raw=true)
+
+For instance, in the case of the Kobuki robot that you are using in this Chapter, the frames looks like this:
+![](https://github.com/rwbot/ros-nav-5days/blob/master/images/base_laser_tfs.png?raw=true)
+
+Now, we need to define a relationship (in terms of position and orientation) between the  _base_laser_  and the  _base_link_. For instance, we know that the  _base_laser frame_  is at a distance of 20 cm in the  _y_  axis and 10 cm in the  _x_axis referring the  _base_link frame_. Then we'll have to provide this relationship to the robot.  **This relationship between the position of the laser and the base of the robot is known in ROS as the TRANSFORM between the laser and the robot**.
+
+For the slam_gmapping node to work properly, you will need to provide 2 transforms:
+
+-   **the frame attached to laser -> base_link**: Usually a fixed value, broadcast periodically by a robot_state_publisher, or a tf static_transform_publisher.
+-   **base_link -> odom**: Usually provided by the Odometry system
+
+Since the robot needs to be able to access this information anytime, we will publish this information to a  **transform tree**. The transform tree is like a database where we can find information about all the transformations between the different frames (elements) of the robot.
+
+You can visualize the transform tree of your running system anytime by using the following command:
+
+```
+rosrun tf view_frames
+```
+This command will generate a pdf file containing a graph with the transform tree of your system.
+![enter image description here](https://github.com/rwbot/ros-nav-5days/blob/master/images/frames_pdf.png?raw=true)
+
+Now, let's imagine you just mounted the laser on your robot, so the transform between your laser and the base of the robot is not set. What could you do? There are basically 2 ways of publishing a transform:
+
+-   Use a  **static_transform_publisher**
+-   Use a  **transform broadcaster**
+
+In this Course, we'll use the **`static_transform_publisher`**, since it's the fastest way. The **`static_transform_publisher`** is a ready-to-use node that allows us to directly publish a transform by simply using the command line. The structure of the command is the next one:
+
+```
+static_transform_publisher x y z yaw pitch roll frame_id child_frame_id period_in_ms
+```
+Where:
+
+-   **x, y, z**  are the offsets in meters
+-   **yaw, pitch, roll**  are the rotation in radians
+-   **period_in_ms**  specifies how often to send the transform
+
+You can also create a launch file that launches the command above, specifying the different values :
+
+```xml
+<launch>
+ <node 
+ pkg="tf" 
+ type="static_transform_publisher" 
+ name="name_of_node" 
+ args="x y z yaw pitch roll frame_id child_frame_id period_in_ms">
+ </node>
+</launch>
+```
+---
+  
+Having shown how to create a transform broadcaster, let me tell you a secret. This is not something that you'll usually have to do. 
+  
+In the previous Chapter (Basic Concepts), you learned that the description of the robot model is made in the URDF files, right? Well, the  **publication of the transforms is also handled by the URDF files**. At least, this is the common use. There exist, though, some cases where you do have to publish a transform separately from the URDF files. For instance:
+
+-   If you temporarily add a sensor to the robot. That is, you add a sensor that will be used during a few days, and then it will be removed again. In a case like this, instead of changing the URDF files of the robot (which will probably be more cumbersome), you'll just create a transform broadcaster to add the transform of this new sensor.  
+    
+-   You have a sensor that is external from your robot (and static). For instance, check the following scenario:
+![enter image description here](https://github.com/rwbot/ros-nav-5days/blob/master/images/iri_wam.png?raw=true)
 
 
-$$$
+You have a robotic arm and, separated from it, you also have a Kinect camera, which provides information about the table to the robotic arm. In a case like this, you won't specify the transforms of the Kinect camera in the URDF files of the robot, since it's not a part of the robot. You'll also use a separated transform broadcaster.
 
-## slam_gmapping node
-The main task to create this launch file, as you may imagine, is to correctly set the parameters for the slam_gmapping node. This node is highly configurable and has lots of parameters you can change in order to improve the mapping performance. This parameters will be read from the ROS Parameter Server, and can be set either in the launch file itself or in a separated parameter files (YAML file). If you don't set some parameters, it will just take the default values. [Complete list of Gmapping Parameters](http://wiki.ros.org/gmapping)
+
+---
+---
+
+
+# slam_gmapping node
+The main task to create this launch file, as you may imagine, is to correctly set the parameters for the slam_gmapping node. This node is highly configurable and has lots of parameters you can change in order to improve the mapping performance. This parameters will be read from the ROS Parameter Server, and can be set either in the launch file itself or in a separated parameter files (YAML file). If you don't set some parameters, it will just take the default values. 
+[Complete list of Gmapping Parameters](http://wiki.ros.org/gmapping)
 
 ### General Parameters
 -   **base_frame (default: "base_link")**: Indicates the name of the frame attached to the mobile base.
@@ -176,15 +242,75 @@ The main task to create this launch file, as you may imagine, is to correctly se
 -   **temporalUpdate (default: -1.0)**: Sets the time (in seconds) to wait between laser readings. If this value is set to -1.0, then this function is turned off.
 -   **particles (default: 30)**: Number of particles in the filter
 ---
-In the **_gmapping_demo.launch_** file, the parameters where loaded in the launch file itself, as you've seen. So you changed the parameters directly in the launch file. But this is not the only way you have to load parameters. In fact, parameters are usually loaded from an external file. This file that contains the parameters is usually a **YAML file**.  
+In the **_gmapping_demo.launch_** file, the parameters where loaded in the launch file itself, as you've seen. So you changed the parameters directly in the launch file. But this is not the only way you have to load parameters. In fact, parameters are usually loaded from an external file. This file that contains the parameters is usually a **YAML file**.  The syntax is: **name_of_parameter: value_of_parameter**
+
+* **gmapping_params.yaml**
+```yaml
+base_frame: base_footprint
+odom_frame: odom
+map_update_interval: 3.0
+maxUrange: 20.0
+maxRange: 80.0
+sigma: 0.05
+kernelSize: 1
+lstep: 0.05
+astep: 0.05
+iterations: 5
+lsigma: 0.075
+ogain: 3.0
+lskip: 0
+minimumScore: 200
+srr: 0.01
+srt: 0.02
+str: 0.01
+stt: 0.02
+linearUpdate: 0.5
+angularUpdate: 0.436
+temporalUpdate: -1.0
+resampleThreshold: 0.9
+particles: 80
+
+#xmin: -50.0
+#ymin: -50.0
+#xmax: 50.0
+#ymax: 50.0
+#make the starting size small for the benefit of the Android client's memory...
+
+xmin: -1.0
+ymin: -1.0
+xmax: 1.0
+ymax: 1.0
+delta: 0.05
+llsamplerange: 0.01
+llsamplestep: 0.01
+lasamplerange: 0.005
+lasamplestep: 0.005
+```
   
+
 So, you can also write all the parameters in a YAML file, and then load this file (and the parameters) in the launch file just by adding the following line inside the **<node>** tag:
 ```xml
 <rosparam file="$(find my_mapping_launcher)/params/gmapping_params.yaml" command="load" />
 ```
 This will have the exact same result as if the parameters are loaded directly through the launch file. And as you will see, it is a much more clean way to do it.
+* **my_gmapping.launch**
+```xml
+<launch>
+  <arg name="scan_topic"  default="kobuki/laser/scan" />
+  <arg name="base_frame"  default="base_footprint"/>
+  <arg name="odom_frame"  default="odom"/>
+  
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+      <rosparam file="$(find my_mapping_launcher)/params/gmapping_params.yaml" command="load"/>
+      <remap from="scan" to="$(arg scan_topic)"/>
+  </node>
+  
+      <node pkg="rviz" name="rviz" type="rviz" args="-d $(find my_mapping_launcher)/rviz_config/mapping.rviz" />
+</launch>
+```
 
-
+___
+___
 
 # Build a Map Using Logged Data
 
@@ -263,11 +389,11 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 
 
-#
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMzAxNjIwMjMsLTEzMzkwMzY4NTAsLT
-E0MDU5MDMxNTMsLTE5Nzg3MjMyNjYsLTg5NzQ2MDI0MCwtMjEw
-NTY3NjI4MSwtOTAxNTE4NTUyLC01ODU5ODk2OTYsLTE3OTUzNT
-U4NDgsODcxMzU0NTkxLC0xMzY3MTAyMDcsLTE3OTY4NTg4Mjcs
-MTQ5Mzg1NDY3NV19
+eyJoaXN0b3J5IjpbODQ0NDA4NDIxLC0xMTMwMTYyMDIzLC0xMz
+M5MDM2ODUwLC0xNDA1OTAzMTUzLC0xOTc4NzIzMjY2LC04OTc0
+NjAyNDAsLTIxMDU2NzYyODEsLTkwMTUxODU1MiwtNTg1OTg5Nj
+k2LC0xNzk1MzU1ODQ4LDg3MTM1NDU5MSwtMTM2NzEwMjA3LC0x
+Nzk2ODU4ODI3LDE0OTM4NTQ2NzVdfQ==
 -->
