@@ -179,7 +179,7 @@ Where:
 -   **yaw, pitch, roll**  are the rotation in radians
 -   **period_in_ms**  specifies how often to send the transform
 
-You can also create a launch file that launches the command above, specifying the different values in the following way:
+You can also create a launch file that launches the command above, specifying the different values :
 
 ```xml
 <launch>
@@ -191,16 +191,16 @@ You can also create a launch file that launches the command above, specifying th
  </node>
 </launch>
 ```
-
+---
   
-Having shown how to create a transform broadcaster, let me tell you a secret. This is not something that you'll usually have to do. Yeah, I'm really sorry.  
+Having shown how to create a transform broadcaster, let me tell you a secret. This is not something that you'll usually have to do. 
   
 In the previous Chapter (Basic Concepts), you learned that the description of the robot model is made in the URDF files, right? Well, the  **publication of the transforms is also handled by the URDF files**. At least, this is the common use. There exist, though, some cases where you do have to publish a transform separately from the URDF files. For instance:
 
 -   If you temporarily add a sensor to the robot. That is, you add a sensor that will be used during a few days, and then it will be removed again. In a case like this, instead of changing the URDF files of the robot (which will probably be more cumbersome), you'll just create a transform broadcaster to add the transform of this new sensor.  
     
 -   You have a sensor that is external from your robot (and static). For instance, check the following scenario:
-
+![enter image description here](https://github.com/rwbot/ros-nav-5days/blob/master/images/iri_wam.png?raw=true)
 
 
 You have a robotic arm and, separated from it, you also have a Kinect camera, which provides information about the table to the robotic arm. In a case like this, you won't specify the transforms of the Kinect camera in the URDF files of the robot, since it's not a part of the robot. You'll also use a separated transform broadcaster.
@@ -209,8 +209,6 @@ You have a robotic arm and, separated from it, you also have a Kinect camera, wh
 
 
 
-
-$$$
 
 # slam_gmapping node
 The main task to create this launch file, as you may imagine, is to correctly set the parameters for the slam_gmapping node. This node is highly configurable and has lots of parameters you can change in order to improve the mapping performance. This parameters will be read from the ROS Parameter Server, and can be set either in the launch file itself or in a separated parameter files (YAML file). If you don't set some parameters, it will just take the default values. [Complete list of Gmapping Parameters](http://wiki.ros.org/gmapping)
@@ -332,9 +330,9 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDg1MTQwOTEsLTExMzAxNjIwMjMsLT
-EzMzkwMzY4NTAsLTE0MDU5MDMxNTMsLTE5Nzg3MjMyNjYsLTg5
-NzQ2MDI0MCwtMjEwNTY3NjI4MSwtOTAxNTE4NTUyLC01ODU5OD
-k2OTYsLTE3OTUzNTU4NDgsODcxMzU0NTkxLC0xMzY3MTAyMDcs
-LTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV19
+eyJoaXN0b3J5IjpbMjc3MjE2OTU1LC0xMTMwMTYyMDIzLC0xMz
+M5MDM2ODUwLC0xNDA1OTAzMTUzLC0xOTc4NzIzMjY2LC04OTc0
+NjAyNDAsLTIxMDU2NzYyODEsLTkwMTUxODU1MiwtNTg1OTg5Nj
+k2LC0xNzk1MzU1ODQ4LDg3MTM1NDU5MSwtMTM2NzEwMjA3LC0x
+Nzk2ODU4ODI3LDE0OTM4NTQ2NzVdfQ==
 -->
