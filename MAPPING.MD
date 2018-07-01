@@ -76,6 +76,9 @@ Many nodes request to the  **map_server** the current map in which the robot is 
 The service to call in order to get the map is:
 
 -   **static_map - (nav_msgs/GetMap)**: Provides the map occupancy data through this service.
+```bash
+rosservice call /static_map "{}"
+```
 
 Apart from requesting the map through the service above, there are two latched topics that you can connect in order to get a ROS message with the map. The topics at which this node writes the map data are:
 
@@ -130,7 +133,7 @@ Echo of the **`/map`** topic:
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwMTUxODU1MiwtNTg1OTg5Njk2LC0xNz
-k1MzU1ODQ4LDg3MTM1NDU5MSwtMTM2NzEwMjA3LC0xNzk2ODU4
-ODI3LDE0OTM4NTQ2NzVdfQ==
+eyJoaXN0b3J5IjpbMTcyMTIyNTk1NSwtOTAxNTE4NTUyLC01OD
+U5ODk2OTYsLTE3OTUzNTU4NDgsODcxMzU0NTkxLC0xMzY3MTAy
+MDcsLTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV19
 -->
