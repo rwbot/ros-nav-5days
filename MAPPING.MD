@@ -131,10 +131,9 @@ NOTE:
 $$$
 
 ## slam_gmapping node
-[Gmapping Parameters](http://wiki.ros.org/gmapping)
+The main task to create this launch file, as you may imagine, is to correctly set the parameters for the slam_gmapping node. This node is highly configurable and has lots of parameters you can change in order to improve the mapping performance. This parameters will be read from the ROS Parameter Server, and can be set either in the launch file itself or in a separated parameter files (YAML file). If you don't set some parameters, it will just take the default values. [Complete list of Gmapping Parameters](http://wiki.ros.org/gmapping)
 
-### General Parameters[](https://i-0dfe0fc43dcf0c827.robotigniteacademy.com/jupyter/notebooks/Mapping.ipynb#General-Parameters)
-
+### General Parameters
 -   **base_frame (default: "base_link")**: Indicates the name of the frame attached to the mobile base.
 -   **map_frame (default: "map")**: Indicates the name of the frame attached to the map.
 -   **odom_frame (default: "odom")**: Indicates the name of the frame attached to the odometry system.
@@ -161,8 +160,8 @@ $$$
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTMyODk0NjMsLTIxMDU2NzYyODEsLT
-kwMTUxODU1MiwtNTg1OTg5Njk2LC0xNzk1MzU1ODQ4LDg3MTM1
-NDU5MSwtMTM2NzEwMjA3LC0xNzk2ODU4ODI3LDE0OTM4NTQ2Nz
-VdfQ==
+eyJoaXN0b3J5IjpbLTg5NzQ2MDI0MCwtMjEwNTY3NjI4MSwtOT
+AxNTE4NTUyLC01ODU5ODk2OTYsLTE3OTUzNTU4NDgsODcxMzU0
+NTkxLC0xMzY3MTAyMDcsLTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV
+19
 -->
