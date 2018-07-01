@@ -213,11 +213,44 @@ g) You can check if a bag file has been created properly by:
 rosbag info name_of_bag_file.bag
 ```
 
+
+### 2. Build the Map[](https://i-0dfe0fc43dcf0c827.robotigniteacademy.com/jupyter/notebooks/Mapping.ipynb#2.-Build-the-Map)
+
+Once we have the bag file, we're ready to build the map! In order to do see, you'll need to follow the next steps:
+
+a) Start the slam_gmapping node, which will take in laser scans (in this case, on the **`/kobuki/laser/scan`** topic) and produce a map:
+
+```
+rosrun gmapping slam_gmapping scan:=kobuki/laser/scan
+```
+b) Play the bag file to provide data to the slam_gmapping node:
+
+```
+rosbag play name_of_bag_file_created_in_step_1
+```
+Wait for rosbag to finish and exit.
+
+c) Save the created map using the map_saver node as shown in previous sections:
+
+```
+rosrun map_server map_saver -f map_name
+```
+Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the same as the ones you created in Exercise 1.3.
+
+
+
+
+
+
+
+
+
+
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM2MjE2OTQyOCwtMTQwNTkwMzE1MywtMT
-k3ODcyMzI2NiwtODk3NDYwMjQwLC0yMTA1Njc2MjgxLC05MDE1
-MTg1NTIsLTU4NTk4OTY5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OT
-EsLTEzNjcxMDIwNywtMTc5Njg1ODgyNywxNDkzODU0Njc1XX0=
+eyJoaXN0b3J5IjpbLTEzMzkwMzY4NTAsLTE0MDU5MDMxNTMsLT
+E5Nzg3MjMyNjYsLTg5NzQ2MDI0MCwtMjEwNTY3NjI4MSwtOTAx
+NTE4NTUyLC01ODU5ODk2OTYsLTE3OTUzNTU4NDgsODcxMzU0NT
+kxLC0xMzY3MTAyMDcsLTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV19
 
 -->
