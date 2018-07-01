@@ -67,7 +67,22 @@ The YAML File generated will contain the 6 following fields:
 * **free_thresh**: Pixels which have a value smaller than this value will be considered as a completely free zone. **negate**: Inverts the colours of the Map. By default, white means completely free and black means completely occupied.
 
 
+## Providing the map[¶](https://i-0b94a5b2534177362.robotigniteacademy.com/jupyter/notebooks/Mapping.ipynb#Providing-the-map)
 
+Besides the map_saver node, the map_server package also provides the  **map_server node**. This node reads a map file from the disk and provides the map to any other node that requests it via a ROS Service.
+
+Many nodes request to the  **map_server** the current map in which the robot is moving. This request is done, for instance, by the move_base node in order to get data from a map and use it to perform Path Planning, or by the localization node in order to figure out where in the map the robot is. You'll see examples of this usage in following chapters.
+
+The service to call in order to get the map is:
+
+-   **static_map (nav_msgs/GetMap)**: Provides the map occupancy data through this service.
+
+Apart from requesting the map through the service above, there are two latched topics that you can connect in order to get a ROS message with the map. The topics at which this node writes the map data are:
+
+-   **map_metadata (nav_msgs/MapMetaData):** Provides the map metadata through this topic.
+-   **map (nav_msgs/OccupancyGrid):** Provides the map occupancy data through this topic.
+
+>**NOTE**: When a topic is latched, it means that the last message published to that topic will be saved. That means, any node that listens to this topic in the future will get this last message, even if nobody is publishing to this topic anymore. In order to specify that a topic will be latched, you just have to set the  _latch_  attribute to true when creating the topic.
 
 
 
@@ -103,6 +118,6 @@ The YAML File generated will contain the 6 following fields:
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzIzMDExNjIsLTEzNjcxMDIwNywtMT
-c5Njg1ODgyNywxNDkzODU0Njc1XX0=
+eyJoaXN0b3J5IjpbNDIxNjAwNDg4LC0xMzY3MTAyMDcsLTE3OT
+Y4NTg4MjcsMTQ5Mzg1NDY3NV19
 -->
