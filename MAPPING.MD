@@ -161,7 +161,7 @@ You can visualize the transform tree of your running system anytime by using the
 rosrun tf view_frames
 ```
 This command will generate a pdf file containing a graph with the transform tree of your system.
-
+![enter image description here](https://github.com/rwbot/ros-nav-5days/blob/master/images/frames_pdf.png?raw=true)
 
 Now, let's imagine you just mounted the laser on your robot, so the transform between your laser and the base of the robot is not set. What could you do? There are basically 2 ways of publishing a transform:
 
@@ -170,7 +170,6 @@ Now, let's imagine you just mounted the laser on your robot, so the transform be
 
 In this Course, we'll use the static_transform_publisher, since it's the fastest way. The static_transform_publisher is a ready-to-use node that allows us to directly publish a transform by simply using the command line. The structure of the command is the next one:
 
-In [ ]:
 
 static_transform_publisher x y z yaw pitch roll frame_id child_frame_id period_in_ms
 
@@ -333,7 +332,7 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1MzExNDMyLC0xMTMwMTYyMDIzLC0xMz
+eyJoaXN0b3J5IjpbMzgyMzYyMTgxLC0xMTMwMTYyMDIzLC0xMz
 M5MDM2ODUwLC0xNDA1OTAzMTUzLC0xOTc4NzIzMjY2LC04OTc0
 NjAyNDAsLTIxMDU2NzYyODEsLTkwMTUxODU1MiwtNTg1OTg5Nj
 k2LC0xNzk1MzU1ODQ4LDg3MTM1NDU5MSwtMTM2NzEwMjA3LC0x
