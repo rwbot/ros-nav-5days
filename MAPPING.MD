@@ -242,7 +242,7 @@ The main task to create this launch file, as you may imagine, is to correctly se
 -   **temporalUpdate (default: -1.0)**: Sets the time (in seconds) to wait between laser readings. If this value is set to -1.0, then this function is turned off.
 -   **particles (default: 30)**: Number of particles in the filter
 ---
-In the **_gmapping_demo.launch_** file, the parameters where loaded in the launch file itself, as you've seen. So you changed the parameters directly in the launch file. But this is not the only way you have to load parameters. In fact, parameters are usually loaded from an external file. This file that contains the parameters is usually a **YAML file**.  The syntax is: '****name_of_paramter: value_of_parameter****'
+In the **_gmapping_demo.launch_** file, the parameters where loaded in the launch file itself, as you've seen. So you changed the parameters directly in the launch file. But this is not the only way you have to load parameters. In fact, parameters are usually loaded from an external file. This file that contains the parameters is usually a **YAML file**.  The syntax is: **name_of_parameter: value_of_parameter**
 
 ```yaml
 base_frame: base_footprint
@@ -374,9 +374,9 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDkyMzg1NTIsLTExMzAxNjIwMjMsLT
-EzMzkwMzY4NTAsLTE0MDU5MDMxNTMsLTE5Nzg3MjMyNjYsLTg5
-NzQ2MDI0MCwtMjEwNTY3NjI4MSwtOTAxNTE4NTUyLC01ODU5OD
-k2OTYsLTE3OTUzNTU4NDgsODcxMzU0NTkxLC0xMzY3MTAyMDcs
-LTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV19
+eyJoaXN0b3J5IjpbMTA5NzA3OTg3MywtMTEzMDE2MjAyMywtMT
+MzOTAzNjg1MCwtMTQwNTkwMzE1MywtMTk3ODcyMzI2NiwtODk3
+NDYwMjQwLC0yMTA1Njc2MjgxLC05MDE1MTg1NTIsLTU4NTk4OT
+Y5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OTEsLTEzNjcxMDIwNywt
+MTc5Njg1ODgyNywxNDkzODU0Njc1XX0=
 -->
