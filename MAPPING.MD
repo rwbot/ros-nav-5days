@@ -90,7 +90,13 @@ rosrun map_server map_server map_file.yaml
 ```
 **Remember**: You must have created the map (the map_file.yaml file) previously with the gmapping node. You can't provide a map that you haven't created!
 
-
+**provide_map_server.launch**
+```xml
+<launch>
+    <arg name="map_file" default="/home/user/catkin_ws/src/test_map.yaml"/>
+    <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+</launch>
+```
 
 
 
@@ -122,6 +128,7 @@ rosrun map_server map_server map_file.yaml
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTUzNTU4NDgsODcxMzU0NTkxLC0xMz
-Y3MTAyMDcsLTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV19
+eyJoaXN0b3J5IjpbLTU4NTk4OTY5NiwtMTc5NTM1NTg0OCw4Nz
+EzNTQ1OTEsLTEzNjcxMDIwNywtMTc5Njg1ODgyNywxNDkzODU0
+Njc1XX0=
 -->
