@@ -293,8 +293,21 @@ So, you can also write all the parameters in a YAML file, and then load this fil
 <rosparam file="$(find my_mapping_launcher)/params/gmapping_params.yaml" command="load" />
 ```
 This will have the exact same result as if the parameters are loaded directly through the launch file. And as you will see, it is a much more clean way to do it.
-
-
+* **my_gmapping.launch**
+```xml
+<launch>
+  <arg name="scan_topic"  default="kobuki/laser/scan" />
+  <arg name="base_frame"  default="base_footprint"/>
+  <arg name="odom_frame"  default="odom"/>
+  
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+      <rosparam file="$(find my_mapping_launcher)/params/gmapping_params.yaml" command="load"/>
+      <remap from="scan" to="$(arg scan_topic)"/>
+  </node>
+  
+      <node pkg="rviz" name="rviz" type="rviz" args="-d $(find my_mapping_launcher)/rviz_config/mapping.rviz" />
+</launch>
+```
 
 
 
@@ -377,7 +390,7 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM3OTE3Mjc3MCwtMTEzMDE2MjAyMywtMT
+eyJoaXN0b3J5IjpbMTY1NjcyMTY5MCwtMTEzMDE2MjAyMywtMT
 MzOTAzNjg1MCwtMTQwNTkwMzE1MywtMTk3ODcyMzI2NiwtODk3
 NDYwMjQwLC0yMTA1Njc2MjgxLC05MDE1MTg1NTIsLTU4NTk4OT
 Y5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OTEsLTEzNjcxMDIwNywt
