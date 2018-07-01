@@ -127,7 +127,7 @@ NOTE:
 -   The map that you created is a  **2D Map**. This means that, the obstacles that appear on the map don't have height. So if, for instance, you try to use this map to navigate with a drone, it won't be valid. There exist packages that allow you to generate 3D mappings, but this issue won't be covered in this Course. 
 
 
-
+### Hardware
 $$$
 
 ## slam_gmapping node
@@ -250,9 +250,9 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwOTI5MTcxNCwtMTMzOTAzNjg1MCwtMT
-QwNTkwMzE1MywtMTk3ODcyMzI2NiwtODk3NDYwMjQwLC0yMTA1
-Njc2MjgxLC05MDE1MTg1NTIsLTU4NTk4OTY5NiwtMTc5NTM1NT
-g0OCw4NzEzNTQ1OTEsLTEzNjcxMDIwNywtMTc5Njg1ODgyNywx
-NDkzODU0Njc1XX0=
+eyJoaXN0b3J5IjpbLTEzMDMwMDkzNDEsLTEzMzkwMzY4NTAsLT
+E0MDU5MDMxNTMsLTE5Nzg3MjMyNjYsLTg5NzQ2MDI0MCwtMjEw
+NTY3NjI4MSwtOTAxNTE4NTUyLC01ODU5ODk2OTYsLTE3OTUzNT
+U4NDgsODcxMzU0NTkxLC0xMzY3MTAyMDcsLTE3OTY4NTg4Mjcs
+MTQ5Mzg1NDY3NV19
 -->
