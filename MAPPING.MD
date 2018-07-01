@@ -106,7 +106,7 @@ Echo of the **`/map`** topic:
 ![enter image description here](https://github.com/rwbot/ros-nav-5days/blob/master/images/echo_map.png?raw=true)
 
 #### Service Client for **`/static_map`**
-
+* **call_map_service.py**
 ```python
 #! /usr/bin/env python
 
@@ -121,7 +121,11 @@ get_map = GetMapRequest() # Create an object of type GetMapRequest
 result = get_map_service(get_map) # Call the service
 print result # Print the result given by the service called
 ```
-
+NOTE:
+-   The map created is a  **static map**. This means that the map will always stay as it was when created . So when you create a Map, it will capture the environment as it is at the exact moment that the mapping process is being performed. If for any reason, the environment changes in the future, these changes won't appear on the map, hence it won't be valid anymore (or it won't correspond to the actual environment).  
+      
+    
+-   The map that you created is a  **2D Map**. This means that, the obstacles that appear on the map don't have height. So if, for instance, you try to use this map to navigate with a drone, it won't be valid. There exist packages that allow you to generate 3D mappings, but this issue won't be covered in this Course. If you're interested in this topic, you can have a look at the following link:
 
 
 
@@ -147,7 +151,7 @@ print result # Print the result given by the service called
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTQ3OTA0NTgxLC05MDE1MTg1NTIsLTU4NT
-k4OTY5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OTEsLTEzNjcxMDIw
-NywtMTc5Njg1ODgyNywxNDkzODU0Njc1XX0=
+eyJoaXN0b3J5IjpbLTE4MTQ2MjE5NjMsLTkwMTUxODU1MiwtNT
+g1OTg5Njk2LC0xNzk1MzU1ODQ4LDg3MTM1NDU5MSwtMTM2NzEw
+MjA3LC0xNzk2ODU4ODI3LDE0OTM4NTQ2NzVdfQ==
 -->
