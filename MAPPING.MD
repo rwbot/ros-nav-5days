@@ -309,7 +309,8 @@ This will have the exact same result as if the parameters are loaded directly th
 </launch>
 ```
 
-
+___
+___
 
 # Build a Map Using Logged Data
 
@@ -388,11 +389,11 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 
 
-#
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY1NjcyMTY5MCwtMTEzMDE2MjAyMywtMT
-MzOTAzNjg1MCwtMTQwNTkwMzE1MywtMTk3ODcyMzI2NiwtODk3
-NDYwMjQwLC0yMTA1Njc2MjgxLC05MDE1MTg1NTIsLTU4NTk4OT
-Y5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OTEsLTEzNjcxMDIwNywt
-MTc5Njg1ODgyNywxNDkzODU0Njc1XX0=
+eyJoaXN0b3J5IjpbODQ0NDA4NDIxLC0xMTMwMTYyMDIzLC0xMz
+M5MDM2ODUwLC0xNDA1OTAzMTUzLC0xOTc4NzIzMjY2LC04OTc0
+NjAyNDAsLTIxMDU2NzYyODEsLTkwMTUxODU1MiwtNTg1OTg5Nj
+k2LC0xNzk1MzU1ODQ4LDg3MTM1NDU5MSwtMTM2NzEwMjA3LC0x
+Nzk2ODU4ODI3LDE0OTM4NTQ2NzVdfQ==
 -->
