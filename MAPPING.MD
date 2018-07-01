@@ -174,10 +174,12 @@ This will have the exact same result as if the parameters are loaded directly th
 # Build a Map Using Logged Data
 
 Until now we've seen how to build a map by moving the robot in real-time. But this is not the only way of creating a map, of course! As you already know, the process of building a map is based on reading the data that is being published in the laser and the transform topics. That's why we were moving the robot around, to publish the data that the robot was getting in real-time while moving. But if we just need some data being published on those topics... doesn't it come to your mind another obvious way of creating a map? That's right! You could just use a bag file in order to publish data on those topics, and therefore build a map.  
-  
+
+ [ROS Wiki: rosbag](http://wiki.ros.org/slam_gmapping/Tutorials/MappingFromLoggedData)
+ 
 In order to build a map using logged data, you will have to follow these 2 steps (which are divided into sub-steps):
 
-### 1. Create the bag file[](https://i-0dfe0fc43dcf0c827.robotigniteacademy.com/jupyter/notebooks/Mapping.ipynb#1.-Create-the-bag-file)
+### 1. Create the bag file
 
 In order to create a proper bag file for Mapping, you'll need to follow the next steps:
 
@@ -248,9 +250,9 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzkwMzY4NTAsLTE0MDU5MDMxNTMsLT
-E5Nzg3MjMyNjYsLTg5NzQ2MDI0MCwtMjEwNTY3NjI4MSwtOTAx
-NTE4NTUyLC01ODU5ODk2OTYsLTE3OTUzNTU4NDgsODcxMzU0NT
-kxLC0xMzY3MTAyMDcsLTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV19
-
+eyJoaXN0b3J5IjpbLTgwOTI5MTcxNCwtMTMzOTAzNjg1MCwtMT
+QwNTkwMzE1MywtMTk3ODcyMzI2NiwtODk3NDYwMjQwLC0yMTA1
+Njc2MjgxLC05MDE1MTg1NTIsLTU4NTk4OTY5NiwtMTc5NTM1NT
+g0OCw4NzEzNTQ1OTEsLTEzNjcxMDIwNywtMTc5Njg1ODgyNywx
+NDkzODU0Njc1XX0=
 -->
