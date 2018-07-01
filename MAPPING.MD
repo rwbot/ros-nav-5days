@@ -194,11 +194,21 @@ You can also create a launch file that launches the command above, specifying th
 ```
 
   
+Having shown how to create a transform broadcaster, let me tell you a secret. This is not something that you'll usually have to do. Yeah, I'm really sorry.  
+  
+In the previous Chapter (Basic Concepts), you learned that the description of the robot model is made in the URDF files, right? Well, the  **publication of the transforms is also handled by the URDF files**. At least, this is the common use. There exist, though, some cases where you do have to publish a transform separately from the URDF files. For instance:
+
+-   If you temporarily add a sensor to the robot. That is, you add a sensor that will be used during a few days, and then it will be removed again. In a case like this, instead of changing the URDF files of the robot (which will probably be more cumbersome), you'll just create a transform broadcaster to add the transform of this new sensor.  
+    
+-   You have a sensor that is external from your robot (and static). For instance, check the following scenario:
+
+![](https://i-0dfe0fc43dcf0c827.robotigniteacademy.com/jupyter/notebooks/img/iri_wam.png)
+
+You have a robotic arm and, separated from it, you also have a Kinect camera, which provides information about the table to the robotic arm. In a case like this, you won't specify the transforms of the Kinect camera in the URDF files of the robot, since it's not a part of the robot. You'll also use a separated transform broadcaster.
 
 
 
-
-
+![](https://i-0dfe0fc43dcf0c827.robotigniteacademy.com/jupyter/notebooks/img/kinect_link.png)
 
 
 
@@ -325,9 +335,9 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ0OTY2MTg0NCwtMTEzMDE2MjAyMywtMT
-MzOTAzNjg1MCwtMTQwNTkwMzE1MywtMTk3ODcyMzI2NiwtODk3
-NDYwMjQwLC0yMTA1Njc2MjgxLC05MDE1MTg1NTIsLTU4NTk4OT
-Y5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OTEsLTEzNjcxMDIwNywt
-MTc5Njg1ODgyNywxNDkzODU0Njc1XX0=
+eyJoaXN0b3J5IjpbLTE3NTgyODg0ODcsLTExMzAxNjIwMjMsLT
+EzMzkwMzY4NTAsLTE0MDU5MDMxNTMsLTE5Nzg3MjMyNjYsLTg5
+NzQ2MDI0MCwtMjEwNTY3NjI4MSwtOTAxNTE4NTUyLC01ODU5OD
+k2OTYsLTE3OTUzNTU4NDgsODcxMzU0NTkxLC0xMzY3MTAyMDcs
+LTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV19
 -->
