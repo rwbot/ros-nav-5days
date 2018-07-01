@@ -171,15 +171,54 @@ This will have the exact same result as if the parameters are loaded directly th
 
 
 
+## Build a Map Using Logged Data[¶](https://i-0dfe0fc43dcf0c827.robotigniteacademy.com/jupyter/notebooks/Mapping.ipynb#Build-a-Map-Using-Logged-Data)
 
+Until now we've seen how to build a map by moving the robot in real-time. But this is not the only way of creating a map, of course! As you already know, the process of building a map is based on reading the data that is being published in the laser and the transform topics. That's why we were moving the robot around, to publish the data that the robot was getting in real-time while moving. But if we just need some data being published on those topics... doesn't it come to your mind another obvious way of creating a map? That's right! You could just use a bag file in order to publish data on those topics, and therefore build a map.  
+  
+In order to build a map using logged data, you will have to follow these 2 steps (which are divided into sub-steps):
+
+### 1. Create the bag file[](https://i-0dfe0fc43dcf0c827.robotigniteacademy.com/jupyter/notebooks/Mapping.ipynb#1.-Create-the-bag-file)
+
+In order to create a proper bag file for Mapping, you'll need to follow the next steps:
+
+a) First of all, launch your keyboard teleop to start moving the robot:
+
+In [ ]:
+
+roslaunch pkg_name keyboard_teleop_launch_file.launch
+
+b) Make sure that the robot is publishing its laser data and the tfs.
+
+In [ ]:
+
+rostopic list
+
+c) Start recording scans and transforms (note that the scan topic may vary from robot to robot):
+
+[esto no puede funcionar porque no estas grabando la odometria]
+
+In [ ]:
+
+rosbag record -O mylaserdata /laser_topic /tf_topic
+
+This will start writing a file in the current directory called  _mylaserdata.bag_.
+
+d) Drive the robot around. General advice:
+
+-   Try to limit fast rotations, as they are hardest on the scan-matcher. It helps to lower the speed.
+-   Visualize what the robot "sees" with its laser; if the laser can't see it, it won't be in the map.
+-   Loop closure is the hardest part; when closing a loop, be sure to drive another 5-10 meters to get plenty of overlap between the start and end of the loop.
+
+f) Kill the rosbag instance, and note the name of the file that was created.
 
 
 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDU5MDMxNTMsLTE5Nzg3MjMyNjYsLT
-g5NzQ2MDI0MCwtMjEwNTY3NjI4MSwtOTAxNTE4NTUyLC01ODU5
-ODk2OTYsLTE3OTUzNTU4NDgsODcxMzU0NTkxLC0xMzY3MTAyMD
-csLTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV19
+eyJoaXN0b3J5IjpbLTIyNzU0ODIyLC0xNDA1OTAzMTUzLC0xOT
+c4NzIzMjY2LC04OTc0NjAyNDAsLTIxMDU2NzYyODEsLTkwMTUx
+ODU1MiwtNTg1OTg5Njk2LC0xNzk1MzU1ODQ4LDg3MTM1NDU5MS
+wtMTM2NzEwMjA3LC0xNzk2ODU4ODI3LDE0OTM4NTQ2NzVdfQ==
+
 -->
