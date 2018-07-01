@@ -164,8 +164,10 @@ The main task to create this launch file, as you may imagine, is to correctly se
 In the **_gmapping_demo.launch_** file, the parameters where loaded in the launch file itself, as you've seen. So you changed the parameters directly in the launch file. But this is not the only way you have to load parameters. In fact, parameters are usually loaded from an external file. This file that contains the parameters is usually a **YAML file**.  
   
 So, you can also write all the parameters in a YAML file, and then load this file (and the parameters) in the launch file just by adding the following line inside the **<node>** tag:
-
-
+```xml
+<rosparam file="$(find my_mapping_launcher)/params/gmapping_params.yaml" command="load" />
+```
+This will have the exact same result as if the parameters are loaded directly through the launch file. And as you will see, it is a much more clean way to do it.
 
 
 
@@ -176,8 +178,8 @@ So, you can also write all the parameters in a YAML file, and then load this fil
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5NDE1NjkxNywtMTk3ODcyMzI2NiwtOD
-k3NDYwMjQwLC0yMTA1Njc2MjgxLC05MDE1MTg1NTIsLTU4NTk4
-OTY5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OTEsLTEzNjcxMDIwNy
-wtMTc5Njg1ODgyNywxNDkzODU0Njc1XX0=
+eyJoaXN0b3J5IjpbLTE0MDU5MDMxNTMsLTE5Nzg3MjMyNjYsLT
+g5NzQ2MDI0MCwtMjEwNTY3NjI4MSwtOTAxNTE4NTUyLC01ODU5
+ODk2OTYsLTE3OTUzNTU4NDgsODcxMzU0NTkxLC0xMzY3MTAyMD
+csLTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV19
 -->
