@@ -45,9 +45,15 @@ This command will get the map data from the map topic, and write it out into 2 f
 
 >**Note 2**: Remember that, in order to be able to visualize the files generated through RViz, these files must be at the  **/home/user/catkin_ws/src**  directory. The files will be initially saved in the directory where you execute the command.
 
-#### PGM (Portable Gray Map) file. A PGM is a file that represents a grayscale image
+#### Map.PGM (Portable Gray Map) file is a file that represents a grayscale image
 
 ![enter image description here](https://github.com/rwbot/ros-nav-5days/blob/master/images/map.png?raw=true)
+
+The image describes the occupancy state of each cell of the world in the color of the corresponding pixel.  **Whiter pixels are free**,  **blacker pixels are occupied**, and  **pixels in between are unknown**. Color and grayscale images are accepted, but most maps are gray (even though they may be stored as if in color). Thresholds in the YAML file are used to divide the three categories.
+
+When communicated via ROS messages, occupancy is represented as an integer in the range [0,100], with  **0 meaning completely free and 100 meaning completely occupied, and the special value -1 for completely unknown**.
+
+Image data is read in via SDL_Image; supported formats vary, depending on what SDL_Image provides on a specific platform. Generally speaking, most popular image formats are widely supported.
 
 #### Map.YAML
 ![
@@ -97,6 +103,6 @@ The YAML File generated will contain the 6 following fields:
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNzUxMzI3OTUsLTEzNjcxMDIwNywtMT
+eyJoaXN0b3J5IjpbLTIwMzIzMDExNjIsLTEzNjcxMDIwNywtMT
 c5Njg1ODgyNywxNDkzODU0Njc1XX0=
 -->
