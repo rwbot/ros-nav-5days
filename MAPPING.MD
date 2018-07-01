@@ -127,7 +127,22 @@ NOTE:
 -   The map that you created is a  **2D Map**. This means that, the obstacles that appear on the map don't have height. So if, for instance, you try to use this map to navigate with a drone, it won't be valid. There exist packages that allow you to generate 3D mappings, but this issue won't be covered in this Course. 
 
 
-### Hardware
+## Transforms
+In the previous exercise you had the robot transforms properly configured, so you can trust that the laser readings will be correctly transformed into the Odom frame. But will this always be like this? NO, it doesn't have to.  
+  
+In order to be able to use the laser readings, we need to set a transform between the laser and the robot base, and add it to the transform tree. Transform? Transform tree? What are you talking about?  
+  
+Ok, let's clarify all this. So we have a Kobuki Robot with a laser mounted on it, right? But,  **in order to be able to use the laser data, we need to tell the robot WHERE (position and orientation) this laser is mounted in the robot**. This is what is called a  **_transform between frames_**.
+
+A transform specifies how data expressed in a frame can be transformed into a different frame. For instance, if you detect an obstacle with the laser at 3 cm in the front, this means that it is 3 cm from the laser, but not from the center of the robot (that is usually called the  **_/base_link_**). To know the distance from the center of the robot, you need to  **_transform_  the 3 cm from the  _/laser_frame_  to the  _/base_link_**  frame (which is actually what the Path Planning system needs to know, what is the distance from the center of the robot to the obstacle).
+
+Don't you think so? If we don't provide this information to the robot, when the laser detects an object, how can the robot know where this object is? Is it in front of the robot? Is it behind? Is it to the right? There's no way the robot can know it if we don't tell the robot the  **POSITION and the ORIENTATION**  of the laser regarding to the center of the robot. In order to do this, we need to do the following:  
+  
+First, we'll define two frames (coordinate frames), one at the center of the laser and another one at the center of the robot. For navigation, it is important that the center of the robot is placed at the  **rotational center**  of the robot. We'll name the laser frame as  _base_laser_  and the robot frame as  _base_link_.
+
+Here you can see an scheme of how it would look like:
+
+
 $$$
 
 ## slam_gmapping node
@@ -250,7 +265,7 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMDMwMDkzNDEsLTEzMzkwMzY4NTAsLT
+eyJoaXN0b3J5IjpbLTExMzAxNjIwMjMsLTEzMzkwMzY4NTAsLT
 E0MDU5MDMxNTMsLTE5Nzg3MjMyNjYsLTg5NzQ2MDI0MCwtMjEw
 NTY3NjI4MSwtOTAxNTE4NTUyLC01ODU5ODk2OTYsLTE3OTUzNT
 U4NDgsODcxMzU0NTkxLC0xMzY3MTAyMDcsLTE3OTY4NTg4Mjcs
