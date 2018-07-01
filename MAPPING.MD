@@ -154,9 +154,16 @@ The main task to create this launch file, as you may imagine, is to correctly se
 -   **ymax (default: 100.0)**: Initial map size
 -   **delta (default: 0.05)**: Sets the resolution of the map
 
+### Other Parameters
 
-
-
+-   **linearUpdate (default: 1.0)**: Sets the linear distance that the robot has to move in order to process a laser reading.
+-   **angularUpdate (default: 0.5)**: Sets the angular distance that the robot has to move in order to process a laser reading.
+-   **temporalUpdate (default: -1.0)**: Sets the time (in seconds) to wait between laser readings. If this value is set to -1.0, then this function is turned off.
+-   **particles (default: 30)**: Number of particles in the filter
+---
+In the **_gmapping_demo.launch_** file, the parameters where loaded in the launch file itself, as you've seen. So you changed the parameters directly in the launch file. But this is not the only way you have to load parameters. In fact, parameters are usually loaded from an external file. This file that contains the parameters is usually a **YAML file**.  
+  
+So, you can also write all the parameters in a YAML file, and then load this file (and the parameters) in the launch file just by adding the following line inside the **<node>** tag:
 
 
 
@@ -169,8 +176,8 @@ The main task to create this launch file, as you may imagine, is to correctly se
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzMzM3NTc4LC0xOTc4NzIzMjY2LC04OT
-c0NjAyNDAsLTIxMDU2NzYyODEsLTkwMTUxODU1MiwtNTg1OTg5
-Njk2LC0xNzk1MzU1ODQ4LDg3MTM1NDU5MSwtMTM2NzEwMjA3LC
-0xNzk2ODU4ODI3LDE0OTM4NTQ2NzVdfQ==
+eyJoaXN0b3J5IjpbLTY5NDE1NjkxNywtMTk3ODcyMzI2NiwtOD
+k3NDYwMjQwLC0yMTA1Njc2MjgxLC05MDE1MTg1NTIsLTU4NTk4
+OTY5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OTEsLTEzNjcxMDIwNy
+wtMTc5Njg1ODgyNywxNDkzODU0Njc1XX0=
 -->
