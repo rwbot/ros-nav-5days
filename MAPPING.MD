@@ -206,12 +206,13 @@ In the previous Chapter (Basic Concepts), you learned that the description of th
 You have a robotic arm and, separated from it, you also have a Kinect camera, which provides information about the table to the robotic arm. In a case like this, you won't specify the transforms of the Kinect camera in the URDF files of the robot, since it's not a part of the robot. You'll also use a separated transform broadcaster.
 
 
-
-
+---
+---
 
 
 # slam_gmapping node
-The main task to create this launch file, as you may imagine, is to correctly set the parameters for the slam_gmapping node. This node is highly configurable and has lots of parameters you can change in order to improve the mapping performance. This parameters will be read from the ROS Parameter Server, and can be set either in the launch file itself or in a separated parameter files (YAML file). If you don't set some parameters, it will just take the default values. [Complete list of Gmapping Parameters](http://wiki.ros.org/gmapping)
+The main task to create this launch file, as you may imagine, is to correctly set the parameters for the slam_gmapping node. This node is highly configurable and has lots of parameters you can change in order to improve the mapping performance. This parameters will be read from the ROS Parameter Server, and can be set either in the launch file itself or in a separated parameter files (YAML file). If you don't set some parameters, it will just take the default values. 
+[Complete list of Gmapping Parameters](http://wiki.ros.org/gmapping)
 
 ### General Parameters
 -   **base_frame (default: "base_link")**: Indicates the name of the frame attached to the mobile base.
@@ -330,9 +331,9 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjc3MjE2OTU1LC0xMTMwMTYyMDIzLC0xMz
-M5MDM2ODUwLC0xNDA1OTAzMTUzLC0xOTc4NzIzMjY2LC04OTc0
-NjAyNDAsLTIxMDU2NzYyODEsLTkwMTUxODU1MiwtNTg1OTg5Nj
-k2LC0xNzk1MzU1ODQ4LDg3MTM1NDU5MSwtMTM2NzEwMjA3LC0x
-Nzk2ODU4ODI3LDE0OTM4NTQ2NzVdfQ==
+eyJoaXN0b3J5IjpbMjA4OTgyNjE4NSwtMTEzMDE2MjAyMywtMT
+MzOTAzNjg1MCwtMTQwNTkwMzE1MywtMTk3ODcyMzI2NiwtODk3
+NDYwMjQwLC0yMTA1Njc2MjgxLC05MDE1MTg1NTIsLTU4NTk4OT
+Y5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OTEsLTEzNjcxMDIwNywt
+MTc5Njg1ODgyNywxNDkzODU0Njc1XX0=
 -->
