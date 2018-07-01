@@ -182,26 +182,23 @@ In order to build a map using logged data, you will have to follow these 2 steps
 In order to create a proper bag file for Mapping, you'll need to follow the next steps:
 
 a) First of all, launch your keyboard teleop to start moving the robot:
-
-In [ ]:
-
+```
 roslaunch pkg_name keyboard_teleop_launch_file.launch
-
+```
 b) Make sure that the robot is publishing its laser data and the tfs.
 
-In [ ]:
-
+```
 rostopic list
-
+```
 c) Start recording scans and transforms (note that the scan topic may vary from robot to robot):
 
 [esto no puede funcionar porque no estas grabando la odometria]
 
-In [ ]:
-
+```
 rosbag record -O mylaserdata /laser_topic /tf_topic
+```
 
-This will start writing a file in the current directory called  _mylaserdata.bag_.
+This will start writing a file in the current directory called  `mylaserdata.bag`.
 
 d) Drive the robot around. General advice:
 
@@ -216,9 +213,9 @@ f) Kill the rosbag instance, and note the name of the file that was created.
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyNzU0ODIyLC0xNDA1OTAzMTUzLC0xOT
-c4NzIzMjY2LC04OTc0NjAyNDAsLTIxMDU2NzYyODEsLTkwMTUx
-ODU1MiwtNTg1OTg5Njk2LC0xNzk1MzU1ODQ4LDg3MTM1NDU5MS
-wtMTM2NzEwMjA3LC0xNzk2ODU4ODI3LDE0OTM4NTQ2NzVdfQ==
+eyJoaXN0b3J5IjpbMTgxNzA2MDI1NSwtMTQwNTkwMzE1MywtMT
+k3ODcyMzI2NiwtODk3NDYwMjQwLC0yMTA1Njc2MjgxLC05MDE1
+MTg1NTIsLTU4NTk4OTY5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OT
+EsLTEzNjcxMDIwNywtMTc5Njg1ODgyNywxNDkzODU0Njc1XX0=
 
 -->
