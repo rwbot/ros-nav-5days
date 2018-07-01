@@ -97,10 +97,10 @@ rosrun map_server map_server map_file.yaml
     <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
 </launch>
 ```
-Echo of the `**/map_metadata**` topic:
-
+Echo of the **`/map_metadata`** topic:
+![enter image description here](https://github.com/rwbot/ros-nav-5days/blob/master/images/echo_map_metadata.png?raw=true)
 Echo of the **`/map`** topic:
-
+![enter image description here](https://github.com/rwbot/ros-nav-5days/blob/master/images/echo_map.png?raw=true)
 
 
 
@@ -130,7 +130,7 @@ Echo of the **`/map`** topic:
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIzMzQ4MzMxMiwtNTg1OTg5Njk2LC0xNz
+eyJoaXN0b3J5IjpbLTkwMTUxODU1MiwtNTg1OTg5Njk2LC0xNz
 k1MzU1ODQ4LDg3MTM1NDU5MSwtMTM2NzEwMjA3LC0xNzk2ODU4
 ODI3LDE0OTM4NTQ2NzVdfQ==
 -->
