@@ -146,7 +146,21 @@ Here you can see an scheme of how it would look like:
 For instance, in the case of the Kobuki robot that you are using in this Chapter, the frames looks like this:
 ![](https://github.com/rwbot/ros-nav-5days/blob/master/images/base_laser_tfs.png?raw=true)
 
+Now, we need to define a relationship (in terms of position and orientation) between the  _base_laser_  and the  _base_link_. For instance, we know that the  _base_laser frame_  is at a distance of 20 cm in the  _y_  axis and 10 cm in the  _x_axis referring the  _base_link frame_. Then we'll have to provide this relationship to the robot.  **This relationship between the position of the laser and the base of the robot is known in ROS as the TRANSFORM between the laser and the robot**.
 
+For the slam_gmapping node to work properly, you will need to provide 2 transforms:
+
+-   **the frame attached to laser -> base_link**: Usually a fixed value, broadcast periodically by a robot_state_publisher, or a tf static_transform_publisher.
+-   **base_link -> odom**: Usually provided by the Odometry system
+
+Since the robot needs to be able to access this information anytime, we will publish this information to a  **transform tree**. The transform tree is like a database where we can find information about all the transformations between the different frames (elements) of the robot.
+
+You can visualize the transform tree of your running system anytime by using the following command:
+
+```
+rosrun tf view_frames
+```
+This command will generate a pdf file containing a graph with the transform tree of your system.
 
 
 
@@ -161,7 +175,7 @@ For instance, in the case of the Kobuki robot that you are using in this Chapter
 
 $$$
 
-## slam_gmapping node
+# slam_gmapping node
 The main task to create this launch file, as you may imagine, is to correctly set the parameters for the slam_gmapping node. This node is highly configurable and has lots of parameters you can change in order to improve the mapping performance. This parameters will be read from the ROS Parameter Server, and can be set either in the launch file itself or in a separated parameter files (YAML file). If you don't set some parameters, it will just take the default values. [Complete list of Gmapping Parameters](http://wiki.ros.org/gmapping)
 
 ### General Parameters
@@ -281,7 +295,7 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAwNzc4NzgzNywtMTEzMDE2MjAyMywtMT
+eyJoaXN0b3J5IjpbMTMyNjYyNjk0NSwtMTEzMDE2MjAyMywtMT
 MzOTAzNjg1MCwtMTQwNTkwMzE1MywtMTk3ODcyMzI2NiwtODk3
 NDYwMjQwLC0yMTA1Njc2MjgxLC05MDE1MTg1NTIsLTU4NTk4OT
 Y5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OTEsLTEzNjcxMDIwNywt
