@@ -97,7 +97,9 @@ rosrun map_server map_server map_file.yaml
     <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
 </launch>
 ```
+Echo of the `**/map_metadata**` topic:
 
+Echo of the **`/map`** topic:
 
 
 
@@ -128,7 +130,7 @@ rosrun map_server map_server map_file.yaml
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4NTk4OTY5NiwtMTc5NTM1NTg0OCw4Nz
-EzNTQ1OTEsLTEzNjcxMDIwNywtMTc5Njg1ODgyNywxNDkzODU0
-Njc1XX0=
+eyJoaXN0b3J5IjpbLTIzMzQ4MzMxMiwtNTg1OTg5Njk2LC0xNz
+k1MzU1ODQ4LDg3MTM1NDU5MSwtMTM2NzEwMjA3LC0xNzk2ODU4
+ODI3LDE0OTM4NTQ2NzVdfQ==
 -->
