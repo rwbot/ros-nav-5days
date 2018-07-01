@@ -168,11 +168,11 @@ Now, let's imagine you just mounted the laser on your robot, so the transform be
 -   Use a  **static_transform_publisher**
 -   Use a  **transform broadcaster**
 
-In this Course, we'll use the static_transform_publisher, since it's the fastest way. The static_transform_publisher is a ready-to-use node that allows us to directly publish a transform by simply using the command line. The structure of the command is the next one:
+In this Course, we'll use the **`static_transform_publisher`**, since it's the fastest way. The **`static_transform_publisher`** is a ready-to-use node that allows us to directly publish a transform by simply using the command line. The structure of the command is the next one:
 
-
+```
 static_transform_publisher x y z yaw pitch roll frame_id child_frame_id period_in_ms
-
+```
 Where:
 
 -   **x, y, z**  are the offsets in meters
@@ -332,9 +332,9 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzgyMzYyMTgxLC0xMTMwMTYyMDIzLC0xMz
-M5MDM2ODUwLC0xNDA1OTAzMTUzLC0xOTc4NzIzMjY2LC04OTc0
-NjAyNDAsLTIxMDU2NzYyODEsLTkwMTUxODU1MiwtNTg1OTg5Nj
-k2LC0xNzk1MzU1ODQ4LDg3MTM1NDU5MSwtMTM2NzEwMjA3LC0x
-Nzk2ODU4ODI3LDE0OTM4NTQ2NzVdfQ==
+eyJoaXN0b3J5IjpbLTEwNDg1MTQwOTEsLTExMzAxNjIwMjMsLT
+EzMzkwMzY4NTAsLTE0MDU5MDMxNTMsLTE5Nzg3MjMyNjYsLTg5
+NzQ2MDI0MCwtMjEwNTY3NjI4MSwtOTAxNTE4NTUyLC01ODU5OD
+k2OTYsLTE3OTUzNTU4NDgsODcxMzU0NTkxLC0xMzY3MTAyMDcs
+LTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV19
 -->
