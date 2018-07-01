@@ -45,17 +45,58 @@ This command will get the map data from the map topic, and write it out into 2 f
 
 >**Note 2**: Remember that, in order to be able to visualize the files generated through RViz, these files must be at the  **/home/user/catkin_ws/src**  directory. The files will be initially saved in the directory where you execute the command.
 
+#### Map.PGM (Portable Gray Map) file is a file that represents a grayscale image
+
+![enter image description here](https://github.com/rwbot/ros-nav-5days/blob/master/images/map.png?raw=true)
+
+The image describes the occupancy state of each cell of the world in the color of the corresponding pixel.  **Whiter pixels are free**,  **blacker pixels are occupied**, and  **pixels in between are unknown**. Color and grayscale images are accepted, but most maps are gray (even though they may be stored as if in color). Thresholds in the YAML file are used to divide the three categories.
+
+When communicated via ROS messages, occupancy is represented as an integer in the range [0,100], with  **0 meaning completely free and 100 meaning completely occupied, and the special value -1 for completely unknown**.
+
+Image data is read in via SDL_Image; supported formats vary, depending on what SDL_Image provides on a specific platform. Generally speaking, most popular image formats are widely supported.
+
+#### Map.YAML
+![
+](https://github.com/rwbot/ros-nav-5days/blob/master/images/my_map_txt.png?raw=true)
+
+The YAML File generated will contain the 6 following fields: 
+* **image**: Name of the file containing the image of the generated Map. 
+* resolution: Resolution of the map (in meters/pixel). 
+* **origin**: Coordinates of the lower-left pixel in the map. This coordinates are given in 2D (x,y). The third value indicates the rotation. If there's no rotation, the value will be 0. 
+* **occupied_thresh**: Pixels which have a value greater than this value will be considered as a completely occupied zone. 
+* **free_thresh**: Pixels which have a value smaller than this value will be considered as a completely free zone. **negate**: Inverts the colours of the Map. By default, white means completely free and black means completely occupied.
 
 
+## Providing the map[¶](https://i-0b94a5b2534177362.robotigniteacademy.com/jupyter/notebooks/Mapping.ipynb#Providing-the-map)
 
+Besides the map_saver node, the map_server package also provides the  **map_server node**. This node reads a map file from the disk and provides the map to any other node that requests it via a ROS Service.
 
+Many nodes request to the  **map_server** the current map in which the robot is moving. This request is done, for instance, by the move_base node in order to get data from a map and use it to perform Path Planning, or by the localization node in order to figure out where in the map the robot is. You'll see examples of this usage in following chapters.
 
+The service to call in order to get the map is:
 
+-   **static_map - (nav_msgs/GetMap)**: Provides the map occupancy data through this service.
 
+Apart from requesting the map through the service above, there are two latched topics that you can connect in order to get a ROS message with the map. The topics at which this node writes the map data are:
 
+-   **map_metadata - (nav_msgs/MapMetaData):** Provides the map metadata through this topic.
+-   **map -  (nav_msgs/OccupancyGrid):** Provides the map occupancy data through this topic.
 
+>**NOTE**: When a topic is latched, it means that the last message published to that topic will be saved. That means, any node that listens to this topic in the future will get this last message, even if nobody is publishing to this topic anymore. In order to specify that a topic will be latched, you just have to set the  _latch_  attribute to true when creating the topic.
 
+To launch the `map_server` node in order to provide information of a map given a map file, use the following command:
+```
+rosrun map_server map_server map_file.yaml
+```
+**Remember**: You must have created the map (the map_file.yaml file) previously with the gmapping node. You can't provide a map that you haven't created!
 
+**provide_map_server.launch**
+```xml
+<launch>
+    <arg name="map_file" default="/home/user/catkin_ws/src/test_map.yaml"/>
+    <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+</launch>
+```
 
 
 
@@ -87,5 +128,7 @@ This command will get the map data from the map topic, and write it out into 2 f
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV19
+eyJoaXN0b3J5IjpbLTU4NTk4OTY5NiwtMTc5NTM1NTg0OCw4Nz
+EzNTQ1OTEsLTEzNjcxMDIwNywtMTc5Njg1ODgyNywxNDkzODU0
+Njc1XX0=
 -->
