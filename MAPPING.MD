@@ -75,12 +75,12 @@ Many nodes request to the  **map_server** the current map in which the robot is 
 
 The service to call in order to get the map is:
 
--   **static_map (nav_msgs/GetMap)**: Provides the map occupancy data through this service.
+-   **static_map - (nav_msgs/GetMap)**: Provides the map occupancy data through this service.
 
 Apart from requesting the map through the service above, there are two latched topics that you can connect in order to get a ROS message with the map. The topics at which this node writes the map data are:
 
--   **map_metadata (nav_msgs/MapMetaData):** Provides the map metadata through this topic.
--   **map (nav_msgs/OccupancyGrid):** Provides the map occupancy data through this topic.
+-   **map_metadata - (nav_msgs/MapMetaData):** Provides the map metadata through this topic.
+-   **map -  (nav_msgs/OccupancyGrid):** Provides the map occupancy data through this topic.
 
 >**NOTE**: When a topic is latched, it means that the last message published to that topic will be saved. That means, any node that listens to this topic in the future will get this last message, even if nobody is publishing to this topic anymore. In order to specify that a topic will be latched, you just have to set the  _latch_  attribute to true when creating the topic.
 
@@ -122,6 +122,6 @@ rosrun map_server map_server map_file.yaml
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQ1NzcxMTU1LDg3MTM1NDU5MSwtMTM2Nz
-EwMjA3LC0xNzk2ODU4ODI3LDE0OTM4NTQ2NzVdfQ==
+eyJoaXN0b3J5IjpbLTE3OTUzNTU4NDgsODcxMzU0NTkxLC0xMz
+Y3MTAyMDcsLTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV19
 -->
