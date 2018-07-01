@@ -45,9 +45,11 @@ This command will get the map data from the map topic, and write it out into 2 f
 
 >**Note 2**: Remember that, in order to be able to visualize the files generated through RViz, these files must be at the  **/home/user/catkin_ws/src**  directory. The files will be initially saved in the directory where you execute the command.
 
-* Map.PGM
+#### PGM (Portable Gray Map) file. A PGM is a file that represents a grayscale image
+
 ![enter image description here](https://github.com/rwbot/ros-nav-5days/blob/master/images/map.png?raw=true)
-* Map.YAML
+
+#### Map.YAML
 ![
 ](https://github.com/rwbot/ros-nav-5days/blob/master/images/my_map_txt.png?raw=true)
 
@@ -95,6 +97,6 @@ The YAML File generated will contain the 6 following fields:
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTcxODk5MTEsLTEzNjcxMDIwNywtMTc5Nj
-g1ODgyNywxNDkzODU0Njc1XX0=
+eyJoaXN0b3J5IjpbLTEwNzUxMzI3OTUsLTEzNjcxMDIwNywtMT
+c5Njg1ODgyNywxNDkzODU0Njc1XX0=
 -->
