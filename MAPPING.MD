@@ -105,7 +105,7 @@ Echo of the **`/map_metadata`** topic:
 Echo of the **`/map`** topic:
 ![enter image description here](https://github.com/rwbot/ros-nav-5days/blob/master/images/echo_map.png?raw=true)
 
-
+#### Service Client for **`/static_map`**
 
 
 
@@ -133,7 +133,7 @@ Echo of the **`/map`** topic:
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcyMTIyNTk1NSwtOTAxNTE4NTUyLC01OD
-U5ODk2OTYsLTE3OTUzNTU4NDgsODcxMzU0NTkxLC0xMzY3MTAy
-MDcsLTE3OTY4NTg4MjcsMTQ5Mzg1NDY3NV19
+eyJoaXN0b3J5IjpbLTg4NDczMTkyLC05MDE1MTg1NTIsLTU4NT
+k4OTY5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OTEsLTEzNjcxMDIw
+NywtMTc5Njg1ODgyNywxNDkzODU0Njc1XX0=
 -->
