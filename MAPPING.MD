@@ -182,14 +182,14 @@ Where:
 
 You can also create a launch file that launches the command above, specifying the different values in the following way:
 
-```
+```xml
 <launch>
- <node pkg="tf" 
+ <node 
+ pkg="tf" 
  type="static_transform_publisher" 
  name="name_of_node" 
-args="x y z yaw pitch roll frame_id child_frame_id period_in_ms">
+ args="x y z yaw pitch roll frame_id child_frame_id period_in_ms">
  </node>
-
 </launch>
 ```
 
@@ -325,7 +325,7 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY2NDM3MDkzOSwtMTEzMDE2MjAyMywtMT
+eyJoaXN0b3J5IjpbMTQ0OTY2MTg0NCwtMTEzMDE2MjAyMywtMT
 MzOTAzNjg1MCwtMTQwNTkwMzE1MywtMTk3ODcyMzI2NiwtODk3
 NDYwMjQwLC0yMTA1Njc2MjgxLC05MDE1MTg1NTIsLTU4NTk4OT
 Y5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OTEsLTEzNjcxMDIwNywt
