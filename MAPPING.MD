@@ -244,6 +244,7 @@ The main task to create this launch file, as you may imagine, is to correctly se
 ---
 In the **_gmapping_demo.launch_** file, the parameters where loaded in the launch file itself, as you've seen. So you changed the parameters directly in the launch file. But this is not the only way you have to load parameters. In fact, parameters are usually loaded from an external file. This file that contains the parameters is usually a **YAML file**.  The syntax is: **name_of_parameter: value_of_parameter**
 
+* **gmapping_params.yaml**
 ```yaml
 base_frame: base_footprint
 odom_frame: odom
@@ -292,6 +293,8 @@ So, you can also write all the parameters in a YAML file, and then load this fil
 <rosparam file="$(find my_mapping_launcher)/params/gmapping_params.yaml" command="load" />
 ```
 This will have the exact same result as if the parameters are loaded directly through the launch file. And as you will see, it is a much more clean way to do it.
+
+
 
 
 
@@ -374,7 +377,7 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5NzA3OTg3MywtMTEzMDE2MjAyMywtMT
+eyJoaXN0b3J5IjpbLTM3OTE3Mjc3MCwtMTEzMDE2MjAyMywtMT
 MzOTAzNjg1MCwtMTQwNTkwMzE1MywtMTk3ODcyMzI2NiwtODk3
 NDYwMjQwLC0yMTA1Njc2MjgxLC05MDE1MTg1NTIsLTU4NTk4OT
 Y5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OTEsLTEzNjcxMDIwNywt
