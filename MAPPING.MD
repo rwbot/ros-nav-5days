@@ -124,7 +124,6 @@ print result # Print the result given by the service called
 NOTE:
 -   The map created is a  **static map**. This means that the map will always stay as it was when created . So when you create a Map, it will capture the environment as it is at the exact moment that the mapping process is being performed. If for any reason, the environment changes in the future, these changes won't appear on the map, hence it won't be valid anymore (or it won't correspond to the actual environment).  
       
-    
 -   The map that you created is a  **2D Map**. This means that, the obstacles that appear on the map don't have height. So if, for instance, you try to use this map to navigate with a drone, it won't be valid. There exist packages that allow you to generate 3D mappings, but this issue won't be covered in this Course. If you're interested in this topic, you can have a look at the following link:
 
 
@@ -151,7 +150,7 @@ NOTE:
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTQ2MjE5NjMsLTkwMTUxODU1MiwtNT
+eyJoaXN0b3J5IjpbLTIxMDU2NzYyODEsLTkwMTUxODU1MiwtNT
 g1OTg5Njk2LC0xNzk1MzU1ODQ4LDg3MTM1NDU5MSwtMTM2NzEw
 MjA3LC0xNzk2ODU4ODI3LDE0OTM4NTQ2NzVdfQ==
 -->
