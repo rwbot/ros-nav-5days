@@ -1,0 +1,21 @@
+/* Changes for terminal */
+#header-container {
+    display: none !important;
+}
+.terminal-app #site {
+    overflow:hidden;
+    background:#000;
+}
+.terminal-app #terminado-container {
+    width:100%;
+    margin-top:0;
+    background-color: #000;
+}
+.terminal-app .terminal {
+    box-shadow:none !important;
+    -webkit-box-shadow:none !important;
+}
+.terminal-app .terminal .xterm-rows {
+    padding: 5px;
+}
+

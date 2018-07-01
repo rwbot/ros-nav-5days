@@ -1,0 +1,477 @@
+Solutions for Navigation Project
+
+Index:
+Solution Step 1
+Solution Step 2
+Solution Step 3
+Solution Step 4
+
+
+Solution Step 1: Generate a Map of the Environment
+3. Create the launch file for the gmapping node.
+Launch File: my_summit_mapping.launch
+In [ ]:
+
+<launch>
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+      <!-- simulation remap from="scan" to="/hokuyo_laser_topic"/ -->
+      <!-- real -->
+      <!-- remap from="scan" to="/scan_filtered"/ -->
+      <remap from="scan" to ="/hokuyo_base/scan"/>
+      <!-- param name="map_udpate_interval" value="5.0"/ -->
+      <param name="base_frame" value="base_footprint"/>
+      <param name="odom_frame" value="odom"/>
+      <param name="map_udpate_interval" value="5.0"/>
+      <param name="maxUrange" value="7.0"/>
+      <param name="sigma" value="0.05"/>
+      <param name="kernelSize" value="1"/>
+      <param name="lstep" value="0.05"/>
+      <param name="astep" value="0.05"/>
+      <param name="iterations" value="5"/>
+      <param name="lsigma" value="0.075"/>
+      <param name="ogain" value="3.0"/>
+      <param name="lskip" value="0"/>
+      <param name="srr" value="0.1"/>
+      <param name="srt" value="0.2"/>
+      <param name="str" value="0.1"/>
+      <param name="stt" value="0.2"/>
+      <param name="linearUpdate" value="0.2"/>
+      <param name="angularUpdate" value="0.1"/>
+      <param name="temporalUpdate" value="3.0"/>
+      <param name="resampleThreshold" value="0.5"/>
+      <param name="particles" value="100"/>
+      <param name="xmin" value="-50.0"/>
+      <param name="ymin" value="-50.0"/>
+      <param name="xmax" value="50.0"/>
+      <param name="ymax" value="50.0"/>
+      <param name="delta" value="0.05"/>
+      <param name="llsamplerange" value="0.01"/>
+      <param name="llsamplestep" value="0.01"/>
+      <param name="lasamplerange" value="0.005"/>
+      <param name="lasamplestep" value="0.005"/>
+    </node>
+</launch>
+END Launch File: my_summit_mapping.launch
+7. Create a launch file that launches the map_server node.
+Launch File: map_provider.launch
+In [ ]:
+
+<launch>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find my_summit_mapping)/maps/exam_map.yaml"/>
+</launch>
+END Launch File: map_provider.launch
+Solution Step 2: Make the Robot Localize itself in the Map
+2. Create the launch file for the amcl node
+Launch File: my_summit_localization.launch
+In [ ]:
+
+<launch>
+​
+<!-- Run the map server -->
+<include file="$(find my_summit_mapping)/launch/map_provider.launch" />
+​
+<node pkg="amcl" type="amcl" name="amcl" output="screen">
+​
+  <remap from="scan" to="/hokuyo_base/scan" />
+  <remap from="cmd_vel" to="/summit_xl_controller/cmd_vel"/>
+​
+  <!-- Publish scans from best pose at a max of 10 Hz -->
+  <param name="odom_model_type" value="diff"/>
+  <param name="odom_alpha5" value="0.1"/>
+  <param name="transform_tolerance" value="0.2" />
+  <param name="gui_publish_rate" value="10.0"/>
+  <param name="laser_max_beams" value="30"/>
+  <param name="min_particles" value="500"/>
+  <param name="max_particles" value="5000"/>
+  <param name="kld_err" value="0.05"/>
+  <param name="kld_z" value="0.99"/>
+  <param name="odom_alpha1" value="0.2"/>
+  <param name="odom_alpha2" value="0.2"/>
+  <param name="odom_alpha3" value="0.8"/>
+  <param name="odom_alpha4" value="0.2"/>
+  <param name="laser_z_hit" value="0.5"/>
+  <param name="laser_z_short" value="0.05"/>
+  <param name="laser_z_max" value="0.05"/>
+  <param name="laser_z_rand" value="0.5"/>
+  <param name="laser_sigma_hit" value="0.2"/>
+  <param name="laser_lambda_short" value="0.1"/>
+  <param name="laser_lambda_short" value="0.1"/>
+  <param name="laser_model_type" value="likelihood_field"/>
+  <param name="laser_likelihood_max_dist" value="2.0"/>
+  <param name="update_min_d" value="0.2"/>
+  <param name="update_min_a" value="0.5"/>
+  <param name="odom_frame_id" value="odom"/>
+  <param name="base_frame_id" value="base_footprint"/>
+  <param name="global_frame_id" value="map"/>
+  <param name="resample_interval" value="1"/>
+  <param name="transform_tolerance" value="0.1"/>
+  <param name="recovery_alpha_slow" value="0.0"/>
+  <param name="recovery_alpha_fast" value="0.0"/>
+  <param name="initial_pose_x" value ="0.0"/>
+  <param name="initial_pose_y" value ="0.0"/>
+  <param name="initial_pose_a" value ="0.0"/>
+​
+</node>
+​
+</launch>
+END Launch File: my_summit_localization.launch
+4. Create the spots table.
+YAML File: spots.yaml
+In [ ]:
+
+turtle:
+ position:
+  x: -4.28077294766
+  y: -3.68536082784
+  z: 0.0
+ orientation:
+  x: 0.0
+  y: 0.0
+  z: 0.0491798419191
+  w: 0.998789939451
+​
+table:
+ position:
+  x: 3.72727024704
+  y: 1.62105207312
+  z: 0.0
+ orientation:
+  x: 0.0
+  y: 0.0
+  z: 0.488753291806
+  w: 0.872422042219
+
+room:
+ position:
+  x: -2.76879232751
+  y: 2.92468779625
+  z: 0.0
+ orientation:
+  x: 0.0
+  y: 0.0
+  z: 0.723179606064
+  w: 0.690660015763
+END YAML File: spots.yaml
+5. Create a ROS Service that saves the different spots into a file.
+Python File: save_spots.py
+In [ ]:
+
+#! /usr/bin/env python
+​
+import rospy
+from my_summit_localization.srv import MyServiceMsg, MyServiceMsgResponse
+from geometry_msgs.msg import Pose
+from geometry_msgs.msg import PoseWithCovarianceStamped
+import time
+​
+​
+class SaveSpots(object):
+    def __init__(self, srv_name='/save_spot'):
+        self._srv_name = srv_name
+        self._pose = PoseWithCovarianceStamped()
+        self.detection_dict = {"turtle":self._pose, "table":self._pose, "room":self._pose}
+        self._my_service = rospy.Service(self._srv_name, MyServiceMsg , self.srv_callback)
+        self._pose_sub = rospy.Subscriber('/amcl_pose', PoseWithCovarianceStamped , self.sub_callback)
+​
+    def sub_callback(self, msg):
+        self._pose = msg
+
+    def srv_callback(self, request):
+
+        label = request.label
+        response = MyServiceMsgResponse()
+        """
+        ---
+        bool navigation_successfull
+        string message # Direction
+        """
+
+        if label == "turtle":
+            self.detection_dict["turtle"] = self._pose
+            response.message = "Saved Pose for turtle spot"
+
+        elif label == "table":
+            self.detection_dict["table"] = self._pose
+            response.message = "Saved Pose for table spot"
+
+        elif label == "room":
+            self.detection_dict["room"] = self._pose
+            response.message = "Saved Pose for room spot"
+
+        elif label == "end":
+            with open('spots.txt', 'w') as file:
+
+                for key, value in self.detection_dict.iteritems():
+                    if value:
+                        file.write(str(key) + ':\n----------\n' + str(value) + '\n===========\n')
+
+                response.message = "Written Poses to spots.txt file"
+
+        else:
+            response.message = "No label with this name. Try with turtle, table, room or end(to write the file)"
+
+
+        response.navigation_successfull = True
+
+        return response
+​
+​
+if __name__ == "__main__":
+    rospy.init_node('spot_recorder', log_level=rospy.INFO)
+    save_spots_object = SaveSpots()
+    rospy.spin() # mantain the service open.
+END Python File: save_spots.py
+Solution Step 3: Set Up the Path Planning System
+2. Create the action server, the client, and the program to compute out of the maze.
+Launch File: move_base.launch
+In [ ]:
+
+<launch>
+  <!--- Run AMCL -->
+  <include file="$(find my_summit_localization)/launch/my_summit_localization.launch" />
+  <remap from="cmd_vel" to="/move_base/cmd_vel" />
+​
+  <!-- Run move_base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find my_summit_path_planning)/config/move_base_params.yaml" command="load" />
+    <rosparam file="$(find my_summit_path_planning)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find my_summit_path_planning)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find my_summit_path_planning)/config/local_costmap_params.yaml" command="load" />
+    <param name="local_costmap/width" value="10.0"/>
+    <param name="local_costmap/height" value="10.0"/>
+    <rosparam file="$(find my_summit_path_planning)/config/global_costmap_params_map.yaml" command="load" />
+    <rosparam file="$(find my_summit_path_planning)/config/dwa_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find my_summit_path_planning)/config/global_planner_params.yaml" command="load" />
+​
+    <param name="base_global_planner" value="navfn/NavfnROS" />
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <param name="controller_frequency" value="5.0" />
+    <param name="controller_patience" value="15.0" />
+  </node>
+​
+</launch>
+END Launch File: move_base.launch
+Param File: move_base_params.yaml
+In [ ]:
+
+controller_frequency: 10.0
+planner_patience: 5.0
+controller_patience: 15.0
+conservative_reset_dist: 3.0
+recovery_behavior_enabled: true
+clearing_rotation_allowed: true
+shutdown_costmaps: false
+oscillation_timeout: 0.0
+oscillation_distance: 0.5
+planner_frequency: 0.2
+END Param File: move_base_params.yaml
+Param File: costmap_common_params.yaml
+In [ ]:
+
+controller_frequency: 10.0
+planner_patience: 5.0
+controller_patience: 15.0
+conservative_reset_dist: 3.0
+recovery_behavior_enabled: true
+clearing_rotation_allowed: true
+shutdown_costmaps: false
+oscillation_timeout: 0.0
+oscillation_distance: 0.5
+planner_frequency: 0.2
+END Param File: costmap_common_params.yaml
+Param File: global_costmap_params_map.yaml
+In [ ]:
+
+controller_frequency: 10.0
+planner_patience: 5.0
+controller_patience: 15.0
+conservative_reset_dist: 3.0
+recovery_behavior_enabled: true
+clearing_rotation_allowed: true
+shutdown_costmaps: false
+oscillation_timeout: 0.0
+oscillation_distance: 0.5
+planner_frequency: 0.2
+END Param File: global_costmap_params_map.yaml
+Param File: local_costmap_params.yaml
+In [ ]:
+
+controller_frequency: 10.0
+planner_patience: 5.0
+controller_patience: 15.0
+conservative_reset_dist: 3.0
+recovery_behavior_enabled: true
+clearing_rotation_allowed: true
+shutdown_costmaps: false
+oscillation_timeout: 0.0
+oscillation_distance: 0.5
+planner_frequency: 0.2
+END Param File: local_costmap_params.yaml
+Param File: global_planner_params.yaml
+In [ ]:
+
+controller_frequency: 10.0
+planner_patience: 5.0
+controller_patience: 15.0
+conservative_reset_dist: 3.0
+recovery_behavior_enabled: true
+clearing_rotation_allowed: true
+shutdown_costmaps: false
+oscillation_timeout: 0.0
+oscillation_distance: 0.5
+planner_frequency: 0.2
+END Param File: global_planner_params.yaml
+Param File: dwa_local_planner_params.yaml
+In [ ]:
+
+controller_frequency: 10.0
+planner_patience: 5.0
+controller_patience: 15.0
+conservative_reset_dist: 3.0
+recovery_behavior_enabled: true
+clearing_rotation_allowed: true
+shutdown_costmaps: false
+oscillation_timeout: 0.0
+oscillation_distance: 0.5
+planner_frequency: 0.2
+END Param File: dwa_local_planner_params.yaml
+Solution Step 4: Create a ROS program that interacts with the Navigation Stack
+3. Create the Service Server.
+Python File: get_coordinates_service_server.py
+In [ ]:
+
+#! /usr/bin/env python
+​
+import rospy
+from my_summit_localization.srv import MyServiceMsg, MyServiceMsgResponse
+from geometry_msgs.msg import Pose
+from geometry_msgs.msg import PoseWithCovarianceStamped
+from send_coordinates_action_client import SendCoordinates
+import actionlib
+import time
+import os
+import rosparam
+​
+​
+class GetCoordinates(object):
+    def __init__(self, srv_name='/get_coordinates'):
+        self._srv_name = srv_name
+        self._my_service = rospy.Service(self._srv_name, MyServiceMsg , self.srv_callback)
+​
+
+    def srv_callback(self, request):
+
+        label = request.label
+        response = MyServiceMsgResponse()
+        """
+        ---
+        bool navigation_successfull
+        string message # Direction
+        """
+
+        os.chdir("/home/user/catkin_ws/src/my_summit_navigation/spots")
+        paramlist=rosparam.load_file("spots.yaml",default_namespace=None)
+
+        for params,ns in paramlist: #ns,param
+
+            for key, value in params.iteritems():
+                if key == request.label:
+                    rosparam.upload_params(ns,params) #ns,param
+                    response.message = "Correctly uploaded parameters"
+
+        send_coordinates = SendCoordinates(request.label)
+
+        response.navigation_successfull = True
+
+        return response
+​
+​
+if __name__ == "__main__":
+    rospy.init_node('get_coordinates_node', log_level=rospy.INFO)
+    get_coordinates_object = GetCoordinates()
+    rospy.spin() # mantain the service open.
+END Python File: get_coordinates_service_server.py
+4. Create the Action Client.
+Python File: send_coordinates_action_client.py
+In [ ]:
+
+#! /usr/bin/env python
+​
+import rospy
+from my_summit_localization.srv import MyServiceMsg, MyServiceMsgResponse
+from geometry_msgs.msg import Pose
+from geometry_msgs.msg import PoseWithCovarianceStamped
+from actionlib_msgs.msg import GoalStatus
+from move_base_msgs.msg import MoveBaseActionGoal, MoveBaseAction, MoveBaseResult, MoveBaseGoal
+import actionlib
+import time
+import os
+import rosparam
+​
+​
+class SendCoordinates(object):
+    def __init__(self, label):
+
+        client = actionlib.SimpleActionClient('/move_base', MoveBaseAction)
+        rate = rospy.Rate(1)
+​
+        goal=MoveBaseGoal()
+        goal_tmp = Pose()
+
+        self._ctrl_c = False
+        rospy.on_shutdown(self.shutdownhook)
+
+
+        tag = label
+
+        while not self._ctrl_c:
+
+            goal_tmp.position.x=rosparam.get_param(tag+'/position/x')
+            goal_tmp.position.y=rosparam.get_param(tag+'/position/y')
+            goal_tmp.position.z=rosparam.get_param(tag+'/position/z')
+            goal_tmp.orientation.x=rosparam.get_param(tag+'/orientation/x')
+            goal_tmp.orientation.y=rosparam.get_param(tag+'/orientation/y')
+            goal_tmp.orientation.z=rosparam.get_param(tag+'/orientation/z')
+            goal_tmp.orientation.w=rosparam.get_param(tag+'/orientation/w')
+            goal.target_pose.pose=goal_tmp
+            goal.target_pose.header.frame_id='map'
+
+            client.wait_for_server()
+            client.send_goal(goal, feedback_cb=self.callback)
+            client.wait_for_result()
+            result=client.get_state()
+
+            #print result
+            if result==3:
+                print('successfuly reached point')
+                self.shutdownhook()
+
+
+    def shutdownhook(self):
+
+        rospy.loginfo("shutdown time!")
+        self._ctrl_c = True
+
+    def callback(self, data):
+        return
+​
+​
+if __name__ == "__main__":
+    rospy.init_node('send_coordinates_node', log_level=rospy.INFO)
+    #send_coordinates_object = SendCoordinates("table")
+    rospy.spin() # mantain the service open.
+END Python File: send_coordinates_action_client.py
+5. Create a launch file that manages everything.
+Python File: get_coordinates_service_server.py
+In [ ]:
+
+<launch>
+
+    <include file="$(find my_summit_path_planning)/launch/move_base.launch" />
+
+    <node pkg="my_summit_navigation" type="get_coordinates_service_server.py" name="get_coordinates_node" output="screen">
+
+    </node>
+
+</launch>
+END Python File: get_coordinates_service_server.py
