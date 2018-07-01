@@ -163,7 +163,37 @@ rosrun tf view_frames
 This command will generate a pdf file containing a graph with the transform tree of your system.
 
 
+Now, let's imagine you just mounted the laser on your robot, so the transform between your laser and the base of the robot is not set. What could you do? There are basically 2 ways of publishing a transform:
 
+-   Use a  **static_transform_publisher**
+-   Use a  **transform broadcaster**
+
+In this Course, we'll use the static_transform_publisher, since it's the fastest way. The static_transform_publisher is a ready-to-use node that allows us to directly publish a transform by simply using the command line. The structure of the command is the next one:
+
+In [ ]:
+
+static_transform_publisher x y z yaw pitch roll frame_id child_frame_id period_in_ms
+
+Where:
+
+-   **x, y, z**  are the offsets in meters
+-   **yaw, pitch, roll**  are the rotation in radians
+-   **period_in_ms**  specifies how often to send the transform
+
+You can also create a launch file that launches the command above, specifying the different values in the following way:
+
+```
+<launch>
+ <node pkg="tf" 
+ type="static_transform_publisher" 
+ name="name_of_node" 
+args="x y z yaw pitch roll frame_id child_frame_id period_in_ms">
+ </node>
+
+</launch>
+```
+
+  
 
 
 
@@ -295,7 +325,7 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyNjYyNjk0NSwtMTEzMDE2MjAyMywtMT
+eyJoaXN0b3J5IjpbMTY2NDM3MDkzOSwtMTEzMDE2MjAyMywtMT
 MzOTAzNjg1MCwtMTQwNTkwMzE1MywtMTk3ODcyMzI2NiwtODk3
 NDYwMjQwLC0yMTA1Njc2MjgxLC05MDE1MTg1NTIsLTU4NTk4OT
 Y5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OTEsLTEzNjcxMDIwNywt
