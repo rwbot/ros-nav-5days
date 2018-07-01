@@ -84,7 +84,11 @@ Apart from requesting the map through the service above, there are two latched t
 
 >**NOTE**: When a topic is latched, it means that the last message published to that topic will be saved. That means, any node that listens to this topic in the future will get this last message, even if nobody is publishing to this topic anymore. In order to specify that a topic will be latched, you just have to set the  _latch_  attribute to true when creating the topic.
 
-
+To launch the map_server node in order to provide information of a map given a map file, use the following command:
+```
+rosrun map_server map_server map_file.yaml
+```
+**Remember**: You must have created the map (the map_file.yaml file) previously with the gmapping node. You can't provide a map that you haven't created!
 
 
 
@@ -118,6 +122,6 @@ Apart from requesting the map through the service above, there are two latched t
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDIxNjAwNDg4LC0xMzY3MTAyMDcsLTE3OT
+eyJoaXN0b3J5IjpbODcxMzU0NTkxLC0xMzY3MTAyMDcsLTE3OT
 Y4NTg4MjcsMTQ5Mzg1NDY3NV19
 -->
