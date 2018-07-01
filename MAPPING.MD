@@ -140,14 +140,19 @@ The main task to create this launch file, as you may imagine, is to correctly se
 -   **map_update_interval (default: 5.0)**: Sets the time (in seconds) to wait until update the map.
 
 
-### Laser Parameters[](https://i-0dfe0fc43dcf0c827.robotigniteacademy.com/jupyter/notebooks/Mapping.ipynb#Laser-Parameters)
-
+### Laser Parameters
 -   **maxRange (float)**: Sets the maximum range of the laser. Set this value to something slightly higher than the real sensor's maximum range.
 -   **maxUrange (default: 80.0)**: Sets the maximum usable range of the laser. The laser beams will be cropped to this value.
 -   **minimumScore (default: 0.0)**: Sets the minimum score to consider a laser reading good.
 
 
+### Initial map dimensions and resolutions
 
+-   **xmin (default: -100.0)**: Initial map size
+-   **ymin (default: -100.0)**: Initial map size
+-   **xmax (default: 100.0)**: Initial map size
+-   **ymax (default: 100.0)**: Initial map size
+-   **delta (default: 0.05)**: Sets the resolution of the map
 
 
 
@@ -164,8 +169,8 @@ The main task to create this launch file, as you may imagine, is to correctly se
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Nzg3MjMyNjYsLTg5NzQ2MDI0MCwtMj
-EwNTY3NjI4MSwtOTAxNTE4NTUyLC01ODU5ODk2OTYsLTE3OTUz
-NTU4NDgsODcxMzU0NTkxLC0xMzY3MTAyMDcsLTE3OTY4NTg4Mj
-csMTQ5Mzg1NDY3NV19
+eyJoaXN0b3J5IjpbLTQzMzM3NTc4LC0xOTc4NzIzMjY2LC04OT
+c0NjAyNDAsLTIxMDU2NzYyODEsLTkwMTUxODU1MiwtNTg1OTg5
+Njk2LC0xNzk1MzU1ODQ4LDg3MTM1NDU5MSwtMTM2NzEwMjA3LC
+0xNzk2ODU4ODI3LDE0OTM4NTQ2NzVdfQ==
 -->
