@@ -141,6 +141,22 @@ Don't you think so? If we don't provide this information to the robot, when the 
 First, we'll define two frames (coordinate frames), one at the center of the laser and another one at the center of the robot. For navigation, it is important that the center of the robot is placed at the  **rotational center**  of the robot. We'll name the laser frame as  _base_laser_  and the robot frame as  _base_link_.
 
 Here you can see an scheme of how it would look like:
+![](https://github.com/rwbot/ros-nav-5days/blob/master/images/tf_diagram.png?raw=true)
+
+For instance, in the case of the Kobuki robot that you are using in this Chapter, the frames looks like this:
+![](https://github.com/rwbot/ros-nav-5days/blob/master/images/base_laser_tfs.png?raw=true)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 $$$
@@ -265,9 +281,9 @@ Now you will have 2 files (map_name.pgm and map_name.yaml) that should look the 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMzAxNjIwMjMsLTEzMzkwMzY4NTAsLT
-E0MDU5MDMxNTMsLTE5Nzg3MjMyNjYsLTg5NzQ2MDI0MCwtMjEw
-NTY3NjI4MSwtOTAxNTE4NTUyLC01ODU5ODk2OTYsLTE3OTUzNT
-U4NDgsODcxMzU0NTkxLC0xMzY3MTAyMDcsLTE3OTY4NTg4Mjcs
-MTQ5Mzg1NDY3NV19
+eyJoaXN0b3J5IjpbMTAwNzc4NzgzNywtMTEzMDE2MjAyMywtMT
+MzOTAzNjg1MCwtMTQwNTkwMzE1MywtMTk3ODcyMzI2NiwtODk3
+NDYwMjQwLC0yMTA1Njc2MjgxLC05MDE1MTg1NTIsLTU4NTk4OT
+Y5NiwtMTc5NTM1NTg0OCw4NzEzNTQ1OTEsLTEzNjcxMDIwNywt
+MTc5Njg1ODgyNywxNDkzODU0Njc1XX0=
 -->
