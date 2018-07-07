@@ -312,11 +312,15 @@ This will have the exact same result as if the parameters are loaded directly th
 ___
 ___
 
-# Build a Map Using Logged Data
+# ROSBAG 
+## Build a Map Using Logged Data
 
 Until now we've seen how to build a map by moving the robot in real-time. But this is not the only way of creating a map, of course! As you already know, the process of building a map is based on reading the data that is being published in the laser and the transform topics. That's why we were moving the robot around, to publish the data that the robot was getting in real-time while moving. But if we just need some data being published on those topics... doesn't it come to your mind another obvious way of creating a map? That's right! You could just use a bag file in order to publish data on those topics, and therefore build a map.  
 
- [ROS Wiki: rosbag](http://wiki.ros.org/slam_gmapping/Tutorials/MappingFromLoggedData)
+ [ROS Wiki: rosbag](http://wiki.ros.org/rosbag)
+ [ROS Wiki: rosbag tutorial](http://wiki.ros.org/slam_gmapping/Tutorials/MappingFromLoggedData)
+[ROS Wiki: rqt_bag](http://wiki.ros.org/rqt_bag) 
+ 
  
 In order to build a map using logged data, you will have to follow these 2 steps (which are divided into sub-steps):
 
