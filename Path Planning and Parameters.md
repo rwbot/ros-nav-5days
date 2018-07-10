@@ -11,6 +11,57 @@ The  **main function of the move_base node is to move the robot from its current
 
 This Action Server provides the topic  **move_base/goal**, which is the input of the Navigation Stack. This topic is then used to provide the goal pose.
 
+So, each time you set a Pose Goal using the 2D Nav Goal tool from RViz, what is really happening is that a new message is being published into the move_base/goal topic.
+
+Anyway, this is not the only topic that the move_base Action Server provides. As every action server, it provides the following 5 topics:
+
+-   **move_base/goal (move_base_msgs/MoveBaseActionGoal)**
+-   **move_base/cancel (actionlib_msgs/GoalID)**
+-   **move_base/feedback (move_base_msgs/MoveBaseActionFeedback)**
+-   **move_base/status (actionlib_msgs/GoalStatusArray)**
+-   **move_base/result (move_base_msgs/MoveBaseActionResult)**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1ODM5MjA1ODksLTU5Njc0NTg1MV19
+eyJoaXN0b3J5IjpbLTM3NTMzMjcxNywtNTk2NzQ1ODUxXX0=
 -->
