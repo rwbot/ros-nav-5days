@@ -320,7 +320,7 @@ Until now we've seen how to build a map by moving the robot in real-time. But th
  [ROS Wiki: rosbag](http://wiki.ros.org/rosbag)
  [ROS Wiki: rosbag tutorial](http://wiki.ros.org/slam_gmapping/Tutorials/MappingFromLoggedData)
 [ROS Wiki: rqt_bag](http://wiki.ros.org/rqt_bag) 
- 
+ slam_gmapping/Tutorials/MappingFromLoggedData)
  
 In order to build a map using logged data, you will have to follow these 2 steps (which are divided into sub-steps):
 
@@ -400,4 +400,7 @@ M5MDM2ODUwLC0xNDA1OTAzMTUzLC0xOTc4NzIzMjY2LC04OTc0
 NjAyNDAsLTIxMDU2NzYyODEsLTkwMTUxODU1MiwtNTg1OTg5Nj
 k2LC0xNzk1MzU1ODQ4LDg3MTM1NDU5MSwtMTM2NzEwMjA3LC0x
 Nzk2ODU4ODI3LDE0OTM4NTQ2NzVdfQ==
+-->
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE1OTQxNzYzOF19
 -->
