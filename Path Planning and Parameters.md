@@ -7,9 +7,9 @@ The move_base package contains the  **move_base node**. Doesn't that sound famil
 
 Ok! We understand that the move_base node is very important, but... what is it exactly? What does it do? Great question!
 
-The  **main function of the move_base node is to move the robot from its current position to a goal position**. Basically, this node is an implementation of a  **SimpleActionServer**_, which takes a goal pose with message type  **geometry_msgs/PoseStamped**. Therefore, we can send position goals to this node by using a  **SimpleActionClient**.
+The  **main function of the move_base node is to move the robot from its current position to a goal position**. Basically, this node is an implementation of a  **SimpleActionServer**, which takes a goal pose with message type  **geometry_msgs/PoseStamped**. Therefore, we can send position goals to this node by using a  **SimpleActionClient**.
 
 This Action Server provides the topic  **move_base/goal**, which is the input of the Navigation Stack. This topic is then used to provide the goal pose.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2NjgyMjY2LC01OTY3NDU4NTFdfQ==
+eyJoaXN0b3J5IjpbODU2MjEwNjEsLTU5Njc0NTg1MV19
 -->
