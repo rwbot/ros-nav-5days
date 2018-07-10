@@ -48,7 +48,7 @@ goal:
 ---
 ```
 
-Anyway, this is not the only topic that the move_base Action Server provides. As every action server, it provides the following 5 topics:
+This is not the only topic that the move_base Action Server provides. As every action server, it provides the following 5 topics:
 
 -   **move_base/goal (move_base_msgs/MoveBaseActionGoal)**
 -   **move_base/cancel (actionlib_msgs/GoalID)**
@@ -98,5 +98,5 @@ Anyway, this is not the only topic that the move_base Action Server provides. As
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODY4OTc3NTQsLTU5Njc0NTg1MV19
+eyJoaXN0b3J5IjpbMTg4NzE2NTIzMSwtNTk2NzQ1ODUxXX0=
 -->
