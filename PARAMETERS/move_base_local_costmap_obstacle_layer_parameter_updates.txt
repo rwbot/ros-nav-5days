@@ -1,0 +1,38 @@
+bools: 
+  - 
+    name: "enabled"
+    value: True
+  - 
+    name: "footprint_clearing_enabled"
+    value: True
+ints: 
+  - 
+    name: "z_voxels"
+    value: 10
+  - 
+    name: "unknown_threshold"
+    value: 15
+  - 
+    name: "mark_threshold"
+    value: 0
+  - 
+    name: "combination_method"
+    value: 1
+strs: []
+doubles: 
+  - 
+    name: "max_obstacle_height"
+    value: 0.6
+  - 
+    name: "origin_z"
+    value: 0.0
+  - 
+    name: "z_resolution"
+    value: 0.2
+groups: 
+  - 
+    name: "Default"
+    state: True
+    id: 0
+    parent: 0
+---

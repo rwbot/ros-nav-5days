@@ -1,0 +1,659 @@
+groups: 
+  - 
+    name: "Default"
+    type: ''
+    parameters: 
+      - 
+        name: "min_particles"
+        type: "int"
+        level: 0
+        description: "Minimum allowed number of particles."
+        edit_method: ''
+      - 
+        name: "max_particles"
+        type: "int"
+        level: 0
+        description: "Mamimum allowed number of particles."
+        edit_method: ''
+      - 
+        name: "kld_err"
+        type: "double"
+        level: 0
+        description: "Maximum error between the true distribution and the estimated distribution."
+        edit_method: ''
+      - 
+        name: "kld_z"
+        type: "double"
+        level: 0
+        description: "Upper standard normal quantile for (1 - p), where p is the probability that the error\
+  \ on the estimated distrubition will be less than kld_err."
+        edit_method: ''
+      - 
+        name: "update_min_d"
+        type: "double"
+        level: 0
+        description: "Translational movement required before performing a filter update."
+        edit_method: ''
+      - 
+        name: "update_min_a"
+        type: "double"
+        level: 0
+        description: "Rotational movement required before performing a filter update."
+        edit_method: ''
+      - 
+        name: "resample_interval"
+        type: "int"
+        level: 0
+        description: "Number of filter updates required before resampling."
+        edit_method: ''
+      - 
+        name: "transform_tolerance"
+        type: "double"
+        level: 0
+        description: "Time with which to post-date the transform that is published, to indicate that this\
+  \ transform is valid into the future."
+        edit_method: ''
+      - 
+        name: "recovery_alpha_slow"
+        type: "double"
+        level: 0
+        description: "Exponential decay rate for the slow average weight filter, used in deciding when\
+  \ to recover by adding random poses. A good value might be 0.001."
+        edit_method: ''
+      - 
+        name: "recovery_alpha_fast"
+        type: "double"
+        level: 0
+        description: "Exponential decay rate for the fast average weight filter, used in deciding when\
+  \ to recover by adding random poses. A good value might be 0.1."
+        edit_method: ''
+      - 
+        name: "do_beamskip"
+        type: "bool"
+        level: 0
+        description: "When true skips laser scans when a scan doesnt work for a majority of particles"
+        edit_method: ''
+      - 
+        name: "beam_skip_distance"
+        type: "double"
+        level: 0
+        description: "Distance from a valid map point before scan is considered invalid"
+        edit_method: ''
+      - 
+        name: "beam_skip_threshold"
+        type: "double"
+        level: 0
+        description: "Ratio of samples for which the scans are valid to consider as valid scan"
+        edit_method: ''
+      - 
+        name: "tf_broadcast"
+        type: "bool"
+        level: 0
+        description: "When true (the default), publish results via TF.  When false, do not."
+        edit_method: ''
+      - 
+        name: "gui_publish_rate"
+        type: "double"
+        level: 0
+        description: "Maximum rate (Hz) at which scans and paths are published for visualization, -1.0\
+  \ to disable."
+        edit_method: ''
+      - 
+        name: "save_pose_rate"
+        type: "double"
+        level: 0
+        description: "Maximum rate (Hz) at which to store the last estimated pose and covariance to the\
+  \ parameter server, in the variables ~initial_pose_* and ~initial_cov_*. This saved\
+  \ pose will be used on subsequent runs to initialize the filter. -1.0 to disable."
+        edit_method: ''
+      - 
+        name: "use_map_topic"
+        type: "bool"
+        level: 0
+        description: "When set to true, AMCL will subscribe to the map topic rather than making a service\
+  \ call to receive its map."
+        edit_method: ''
+      - 
+        name: "first_map_only"
+        type: "bool"
+        level: 0
+        description: "When set to true, AMCL will only use the first map it subscribes to, rather than\
+  \ updating each time a new one is received."
+        edit_method: ''
+      - 
+        name: "laser_min_range"
+        type: "double"
+        level: 0
+        description: "Minimum scan range to be considered; -1.0 will cause the laser's reported minimum\
+  \ range to be used."
+        edit_method: ''
+      - 
+        name: "laser_max_range"
+        type: "double"
+        level: 0
+        description: "Maximum scan range to be considered; -1.0 will cause the laser's reported maximum\
+  \ range to be used."
+        edit_method: ''
+      - 
+        name: "laser_max_beams"
+        type: "int"
+        level: 0
+        description: "How many evenly-spaced beams in each scan to be used when updating the filter."
+        edit_method: ''
+      - 
+        name: "laser_z_hit"
+        type: "double"
+        level: 0
+        description: "Mixture weight for the z_hit part of the model."
+        edit_method: ''
+      - 
+        name: "laser_z_short"
+        type: "double"
+        level: 0
+        description: "Mixture weight for the z_short part of the model."
+        edit_method: ''
+      - 
+        name: "laser_z_max"
+        type: "double"
+        level: 0
+        description: "Mixture weight for the z_max part of the model."
+        edit_method: ''
+      - 
+        name: "laser_z_rand"
+        type: "double"
+        level: 0
+        description: "Mixture weight for the z_rand part of the model."
+        edit_method: ''
+      - 
+        name: "laser_sigma_hit"
+        type: "double"
+        level: 0
+        description: "Standard deviation for Gaussian model used in z_hit part of the model."
+        edit_method: ''
+      - 
+        name: "laser_lambda_short"
+        type: "double"
+        level: 0
+        description: "Exponential decay parameter for z_short part of model."
+        edit_method: ''
+      - 
+        name: "laser_likelihood_max_dist"
+        type: "double"
+        level: 0
+        description: "Maximum distance to do obstacle inflation on map, for use in likelihood_field model."
+        edit_method: ''
+      - 
+        name: "laser_model_type"
+        type: "str"
+        level: 0
+        description: "Which model to use, either beam, likelihood_field or likelihood_field_prob."
+        edit_method: "{'enum_description': 'Laser Models', 'enum': [{'srcline': 52, 'description': 'Use\
+  \ beam laser model', 'srcfile': '/tmp/binarydeb/ros-kinetic-amcl-1.14.3/cfg/AMCL.cfg',\
+  \ 'cconsttype': 'const char * const', 'value': 'beam', 'ctype': 'std::string', 'type':\
+  \ 'str', 'name': 'beam_const'}, {'srcline': 52, 'description': 'Use likelihood_field\
+  \ laser model', 'srcfile': '/tmp/binarydeb/ros-kinetic-amcl-1.14.3/cfg/AMCL.cfg',\
+  \ 'cconsttype': 'const char * const', 'value': 'likelihood_field', 'ctype': 'std::string',\
+  \ 'type': 'str', 'name': 'likelihood_field_const'}]}"
+      - 
+        name: "odom_model_type"
+        type: "str"
+        level: 0
+        description: "Which model to use, diff, omni, diff-corrected, or omni-corrected"
+        edit_method: "{'enum_description': 'Odom Models', 'enum': [{'srcline': 56, 'description': 'Use\
+  \ diff odom model', 'srcfile': '/tmp/binarydeb/ros-kinetic-amcl-1.14.3/cfg/AMCL.cfg',\
+  \ 'cconsttype': 'const char * const', 'value': 'diff', 'ctype': 'std::string', 'type':\
+  \ 'str', 'name': 'diff_const'}, {'srcline': 57, 'description': 'Use omni odom model',\
+  \ 'srcfile': '/tmp/binarydeb/ros-kinetic-amcl-1.14.3/cfg/AMCL.cfg', 'cconsttype':\
+  \ 'const char * const', 'value': 'omni', 'ctype': 'std::string', 'type': 'str',\
+  \ 'name': 'omni_const'}, {'srcline': 58, 'description': 'Use corrected diff odom\
+  \ model', 'srcfile': '/tmp/binarydeb/ros-kinetic-amcl-1.14.3/cfg/AMCL.cfg', 'cconsttype':\
+  \ 'const char * const', 'value': 'diff-corrected', 'ctype': 'std::string', 'type':\
+  \ 'str', 'name': 'diff_corrected_const'}, {'srcline': 59, 'description': 'Use corrected\
+  \ omni odom model', 'srcfile': '/tmp/binarydeb/ros-kinetic-amcl-1.14.3/cfg/AMCL.cfg',\
+  \ 'cconsttype': 'const char * const', 'value': 'omni-corrected', 'ctype': 'std::string',\
+  \ 'type': 'str', 'name': 'omni_corrected_const'}]}"
+      - 
+        name: "odom_alpha1"
+        type: "double"
+        level: 0
+        description: "Specifies the expected noise in odometry's rotation estimate from the rotational\
+  \ component of the robot's motion."
+        edit_method: ''
+      - 
+        name: "odom_alpha2"
+        type: "double"
+        level: 0
+        description: "Specifies the expected noise in odometry's rotation estimate from the translational\
+  \ component of the robot's motion."
+        edit_method: ''
+      - 
+        name: "odom_alpha3"
+        type: "double"
+        level: 0
+        description: "Specifies the expected noise in odometry's translation estimate from the translational\
+  \ component of the robot's motion."
+        edit_method: ''
+      - 
+        name: "odom_alpha4"
+        type: "double"
+        level: 0
+        description: "Specifies the expected noise in odometry's translation  estimate from the rotational\
+  \ component of the robot's motion."
+        edit_method: ''
+      - 
+        name: "odom_alpha5"
+        type: "double"
+        level: 0
+        description: "Translation-related noise parameter (only used if model is omni)."
+        edit_method: ''
+      - 
+        name: "odom_frame_id"
+        type: "str"
+        level: 0
+        description: "Which frame to use for odometry."
+        edit_method: ''
+      - 
+        name: "base_frame_id"
+        type: "str"
+        level: 0
+        description: "Which frame to use for the robot base."
+        edit_method: ''
+      - 
+        name: "global_frame_id"
+        type: "str"
+        level: 0
+        description: "The name of the coordinate frame published by the localization system."
+        edit_method: ''
+      - 
+        name: "restore_defaults"
+        type: "bool"
+        level: 0
+        description: "Retsore the default configuration"
+        edit_method: ''
+    parent: 0
+    id: 0
+max: 
+  bools: 
+    - 
+      name: "do_beamskip"
+      value: True
+    - 
+      name: "tf_broadcast"
+      value: True
+    - 
+      name: "use_map_topic"
+      value: True
+    - 
+      name: "first_map_only"
+      value: True
+    - 
+      name: "restore_defaults"
+      value: True
+  ints: 
+    - 
+      name: "min_particles"
+      value: 1000
+    - 
+      name: "max_particles"
+      value: 10000
+    - 
+      name: "resample_interval"
+      value: 20
+    - 
+      name: "laser_max_beams"
+      value: 100
+  strs: 
+    - 
+      name: "laser_model_type"
+      value: ''
+    - 
+      name: "odom_model_type"
+      value: ''
+    - 
+      name: "odom_frame_id"
+      value: ''
+    - 
+      name: "base_frame_id"
+      value: ''
+    - 
+      name: "global_frame_id"
+      value: ''
+  doubles: 
+    - 
+      name: "kld_err"
+      value: 1.0
+    - 
+      name: "kld_z"
+      value: 1.0
+    - 
+      name: "update_min_d"
+      value: 5.0
+    - 
+      name: "update_min_a"
+      value: 6.28318530718
+    - 
+      name: "transform_tolerance"
+      value: 2.0
+    - 
+      name: "recovery_alpha_slow"
+      value: 0.5
+    - 
+      name: "recovery_alpha_fast"
+      value: 1.0
+    - 
+      name: "beam_skip_distance"
+      value: 2.0
+    - 
+      name: "beam_skip_threshold"
+      value: 1.0
+    - 
+      name: "gui_publish_rate"
+      value: 100.0
+    - 
+      name: "save_pose_rate"
+      value: 10.0
+    - 
+      name: "laser_min_range"
+      value: 1000.0
+    - 
+      name: "laser_max_range"
+      value: 1000.0
+    - 
+      name: "laser_z_hit"
+      value: 10.0
+    - 
+      name: "laser_z_short"
+      value: 10.0
+    - 
+      name: "laser_z_max"
+      value: 10.0
+    - 
+      name: "laser_z_rand"
+      value: 10.0
+    - 
+      name: "laser_sigma_hit"
+      value: 10.0
+    - 
+      name: "laser_lambda_short"
+      value: 10.0
+    - 
+      name: "laser_likelihood_max_dist"
+      value: 20.0
+    - 
+      name: "odom_alpha1"
+      value: 10.0
+    - 
+      name: "odom_alpha2"
+      value: 10.0
+    - 
+      name: "odom_alpha3"
+      value: 10.0
+    - 
+      name: "odom_alpha4"
+      value: 10.0
+    - 
+      name: "odom_alpha5"
+      value: 10.0
+  groups: 
+    - 
+      name: "Default"
+      state: True
+      id: 0
+      parent: 0
+min: 
+  bools: 
+    - 
+      name: "do_beamskip"
+      value: False
+    - 
+      name: "tf_broadcast"
+      value: False
+    - 
+      name: "use_map_topic"
+      value: False
+    - 
+      name: "first_map_only"
+      value: False
+    - 
+      name: "restore_defaults"
+      value: False
+  ints: 
+    - 
+      name: "min_particles"
+      value: 0
+    - 
+      name: "max_particles"
+      value: 0
+    - 
+      name: "resample_interval"
+      value: 0
+    - 
+      name: "laser_max_beams"
+      value: 0
+  strs: 
+    - 
+      name: "laser_model_type"
+      value: ''
+    - 
+      name: "odom_model_type"
+      value: ''
+    - 
+      name: "odom_frame_id"
+      value: ''
+    - 
+      name: "base_frame_id"
+      value: ''
+    - 
+      name: "global_frame_id"
+      value: ''
+  doubles: 
+    - 
+      name: "kld_err"
+      value: 0.0
+    - 
+      name: "kld_z"
+      value: 0.0
+    - 
+      name: "update_min_d"
+      value: 0.0
+    - 
+      name: "update_min_a"
+      value: 0.0
+    - 
+      name: "transform_tolerance"
+      value: 0.0
+    - 
+      name: "recovery_alpha_slow"
+      value: 0.0
+    - 
+      name: "recovery_alpha_fast"
+      value: 0.0
+    - 
+      name: "beam_skip_distance"
+      value: 0.0
+    - 
+      name: "beam_skip_threshold"
+      value: 0.0
+    - 
+      name: "gui_publish_rate"
+      value: -1.0
+    - 
+      name: "save_pose_rate"
+      value: 0.0
+    - 
+      name: "laser_min_range"
+      value: -1.0
+    - 
+      name: "laser_max_range"
+      value: -1.0
+    - 
+      name: "laser_z_hit"
+      value: 0.0
+    - 
+      name: "laser_z_short"
+      value: 0.0
+    - 
+      name: "laser_z_max"
+      value: 0.0
+    - 
+      name: "laser_z_rand"
+      value: 0.0
+    - 
+      name: "laser_sigma_hit"
+      value: 0.0
+    - 
+      name: "laser_lambda_short"
+      value: 0.0
+    - 
+      name: "laser_likelihood_max_dist"
+      value: 0.0
+    - 
+      name: "odom_alpha1"
+      value: 0.0
+    - 
+      name: "odom_alpha2"
+      value: 0.0
+    - 
+      name: "odom_alpha3"
+      value: 0.0
+    - 
+      name: "odom_alpha4"
+      value: 0.0
+    - 
+      name: "odom_alpha5"
+      value: 0.0
+  groups: 
+    - 
+      name: "Default"
+      state: True
+      id: 0
+      parent: 0
+dflt: 
+  bools: 
+    - 
+      name: "do_beamskip"
+      value: False
+    - 
+      name: "tf_broadcast"
+      value: True
+    - 
+      name: "use_map_topic"
+      value: False
+    - 
+      name: "first_map_only"
+      value: False
+    - 
+      name: "restore_defaults"
+      value: False
+  ints: 
+    - 
+      name: "min_particles"
+      value: 100
+    - 
+      name: "max_particles"
+      value: 5000
+    - 
+      name: "resample_interval"
+      value: 2
+    - 
+      name: "laser_max_beams"
+      value: 30
+  strs: 
+    - 
+      name: "laser_model_type"
+      value: "likelihood_field"
+    - 
+      name: "odom_model_type"
+      value: "diff"
+    - 
+      name: "odom_frame_id"
+      value: "odom"
+    - 
+      name: "base_frame_id"
+      value: "base_link"
+    - 
+      name: "global_frame_id"
+      value: "map"
+  doubles: 
+    - 
+      name: "kld_err"
+      value: 0.01
+    - 
+      name: "kld_z"
+      value: 0.99
+    - 
+      name: "update_min_d"
+      value: 0.2
+    - 
+      name: "update_min_a"
+      value: 0.523598775598
+    - 
+      name: "transform_tolerance"
+      value: 0.1
+    - 
+      name: "recovery_alpha_slow"
+      value: 0.0
+    - 
+      name: "recovery_alpha_fast"
+      value: 0.0
+    - 
+      name: "beam_skip_distance"
+      value: 0.5
+    - 
+      name: "beam_skip_threshold"
+      value: 0.3
+    - 
+      name: "gui_publish_rate"
+      value: -1.0
+    - 
+      name: "save_pose_rate"
+      value: 0.5
+    - 
+      name: "laser_min_range"
+      value: -1.0
+    - 
+      name: "laser_max_range"
+      value: -1.0
+    - 
+      name: "laser_z_hit"
+      value: 0.95
+    - 
+      name: "laser_z_short"
+      value: 0.1
+    - 
+      name: "laser_z_max"
+      value: 0.05
+    - 
+      name: "laser_z_rand"
+      value: 0.05
+    - 
+      name: "laser_sigma_hit"
+      value: 0.2
+    - 
+      name: "laser_lambda_short"
+      value: 0.1
+    - 
+      name: "laser_likelihood_max_dist"
+      value: 2.0
+    - 
+      name: "odom_alpha1"
+      value: 0.2
+    - 
+      name: "odom_alpha2"
+      value: 0.2
+    - 
+      name: "odom_alpha3"
+      value: 0.2
+    - 
+      name: "odom_alpha4"
+      value: 0.2
+    - 
+      name: "odom_alpha5"
+      value: 0.2
+  groups: 
+    - 
+      name: "Default"
+      state: True
+      id: 0
+      parent: 0
+---

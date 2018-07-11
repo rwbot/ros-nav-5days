@@ -1,0 +1,53 @@
+bools: 
+  - 
+    name: "recovery_behavior_enabled"
+    value: True
+  - 
+    name: "clearing_rotation_allowed"
+    value: True
+  - 
+    name: "shutdown_costmaps"
+    value: False
+  - 
+    name: "restore_defaults"
+    value: False
+ints: 
+  - 
+    name: "max_planning_retries"
+    value: -1
+strs: 
+  - 
+    name: "base_global_planner"
+    value: "navfn/NavfnROS"
+  - 
+    name: "base_local_planner"
+    value: "dwa_local_planner/DWAPlannerROS"
+doubles: 
+  - 
+    name: "planner_frequency"
+    value: 1.0
+  - 
+    name: "controller_frequency"
+    value: 5.0
+  - 
+    name: "planner_patience"
+    value: 5.0
+  - 
+    name: "controller_patience"
+    value: 3.0
+  - 
+    name: "conservative_reset_dist"
+    value: 3.0
+  - 
+    name: "oscillation_timeout"
+    value: 10.0
+  - 
+    name: "oscillation_distance"
+    value: 0.2
+groups: 
+  - 
+    name: "Default"
+    state: True
+    id: 0
+    parent: 0
+---

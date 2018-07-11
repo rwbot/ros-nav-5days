@@ -1,0 +1,56 @@
+groups: 
+  - 
+    name: "Default"
+    type: ''
+    parameters: 
+      - 
+        name: "enabled"
+        type: "bool"
+        level: 0
+        description: "Whether to apply this plugin or not"
+        edit_method: ''
+    parent: 0
+    id: 0
+max: 
+  bools: 
+    - 
+      name: "enabled"
+      value: True
+  ints: []
+  strs: []
+  doubles: []
+  groups: 
+    - 
+      name: "Default"
+      state: True
+      id: 0
+      parent: 0
+min: 
+  bools: 
+    - 
+      name: "enabled"
+      value: False
+  ints: []
+  strs: []
+  doubles: []
+  groups: 
+    - 
+      name: "Default"
+      state: True
+      id: 0
+      parent: 0
+dflt: 
+  bools: 
+    - 
+      name: "enabled"
+      value: True
+  ints: []
+  strs: []
+  doubles: []
+  groups: 
+    - 
+      name: "Default"
+      state: True
+      id: 0
+      parent: 0
+---
