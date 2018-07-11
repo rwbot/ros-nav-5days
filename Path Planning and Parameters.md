@@ -369,7 +369,8 @@ So, you now know that the first step of this navigation process is to calculate 
 
 There exist different global planners. Depending on your setup (the robot you use, the environment it navigates, etc.), you would use one or another. Let's have a look at the most important ones.
 
-
+### Navfn
+The Navfn planner is probably the most commonly used global planner for ROS Navigation. It uses Dijkstra's algorithm in order to calculate the shortest path between the initial pose and the goal pose. Below, you can see an animation of how this algorithm works.
 
 
 
@@ -395,7 +396,7 @@ There exist different global planners. Depending on your setup (the robot you us
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyNjAyMTg0MCwxMjAyMTM4NzQ5LC0zMj
-MyMTIyMjMsLTEyMTMzODgzOTYsMTg4NzE2NTIzMSwtNTk2NzQ1
-ODUxXX0=
+eyJoaXN0b3J5IjpbMzUyNTYxMjUwLDEyMDIxMzg3NDksLTMyMz
+IxMjIyMywtMTIxMzM4ODM5NiwxODg3MTY1MjMxLC01OTY3NDU4
+NTFdfQ==
 -->
