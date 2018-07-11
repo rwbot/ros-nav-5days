@@ -14,3 +14,5 @@
   
     <node pkg="rviz" name="rviz" type="rviz" args="-d $(find my_mapping_launcher)/rviz_config/mapping.rviz" />
 </launch>
+
+
