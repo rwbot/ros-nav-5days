@@ -477,7 +477,7 @@ The parameters you need to know are the following:
 -   **static_map (default: true)**: Whether or not to use a static map to initialize the costmap.
 -   **rolling_window (default: false)**: Whether or not to use a rolling window version of the costmap. 
 
-### **If the static_map parameter is set to true, this parameter must be set to false.**
+### **If the `static_map` parameter is set to true, `rolling_window` must be set to false.**
 
 -   **plugins**: Sequence of plugin specifications, one per layer. Each specification is a dictionary with a  **name**  and  **type**  fields. The name is used to define the parameter namespace for the plugin. This name will then be defined in the  **common_costmap_parameters.yaml**  file, which you will see in the the next Unit. The type field actually defines the plugin (source code) that is going to be used.
 
@@ -514,7 +514,7 @@ So, by setting the static_map parameter to true, and the rolling_window paramete
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDEwMTM0OTcsMzUyNTYxMjUwLDEyMD
+eyJoaXN0b3J5IjpbLTE0NDQ2NDI4MTQsMzUyNTYxMjUwLDEyMD
 IxMzg3NDksLTMyMzIxMjIyMywtMTIxMzM4ODM5NiwxODg3MTY1
 MjMxLC01OTY3NDU4NTFdfQ==
 -->
