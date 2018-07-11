@@ -196,7 +196,9 @@ goal:
       w: 0.69
 tolerance: 0.0"
 ```
-* Response 
+
+* **Returned Plan**
+
 ```yaml
 plan:
   header:
@@ -361,7 +363,11 @@ plan:
           w: 0.69
 ```
 
+---
 
+So, you now know that the first step of this navigation process is to calculate a safe plan so that your robot can arrive to the user-specified goal pose. But... how is this path calculated?
+
+There exist different global planners. Depending on your setup (the robot you use, the environment it navigates, etc.), you would use one or another. Let's have a look at the most important ones.
 
 
 
@@ -389,7 +395,7 @@ plan:
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjgzNzc1OTYsMTIwMjEzODc0OSwtMzIzMj
-EyMjIzLC0xMjEzMzg4Mzk2LDE4ODcxNjUyMzEsLTU5Njc0NTg1
-MV19
+eyJoaXN0b3J5IjpbMTkyNjAyMTg0MCwxMjAyMTM4NzQ5LC0zMj
+MyMTIyMjMsLTEyMTMzODgzOTYsMTg4NzE2NTIzMSwtNTk2NzQ1
+ODUxXX0=
 -->
