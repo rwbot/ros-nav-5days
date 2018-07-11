@@ -478,23 +478,34 @@ The parameters you need to know are the following:
 -   **rolling_window (default: false)**: Whether or not to use a rolling window version of the costmap. 
 
 ### **If the `static_map` parameter is set to true, `rolling_window` must be set to false.**
+So, by setting the static_map parameter to true, and the rolling_window parameters to false, we will initialize the costmap by getting the data from a static map. This is the way you want to initialize a global costmap.
 
 -   **plugins**: Sequence of plugin specifications, one per layer. Each specification is a dictionary with a  **name**  and  **type**  fields. The name is used to define the parameter namespace for the plugin. This name will then be defined in the  **common_costmap_parameters.yaml**  file, which you will see in the the next Unit. The type field actually defines the plugin (source code) that is going to be used.
 
-So, by setting the static_map parameter to true, and the rolling_window parameters to false, we will initialize the costmap by getting the data from a static map. This is the way you want to initialize a global costmap.
+The last parameter you need to know how to set is the plugins area. In the plugins area, we will add layers to the costmap configuration. Ok, but... what are layers?
 
+In order to simplify (and clarify) the configuration of costmaps, ROS uses layers. Layers are like "blocks" of parameters that are related. For instance, the  **static map, the sensed obstacles, and the inflation are separated into different layers**. These layers are defined in the  **_common_costmap_parameters.yaml_**  file, and then added to the  **_local_costmap_params.yaml_**  and  **_global_costmap_params.yaml_**  files.
 
+To add a layer to a configuration file of a costmap, you will specify it in the plugins area. Have a look at the following line:
+```yaml
+plugins: 
+    - {name: static_map,       type: "costmap_2d::StaticLayer"}
+```
 
+Here, you're adding to your costmap configuration a layer named **static_map**, which will use the **costmap_2d::StaticLayer** plugin. You can add as many layers as you want:
 
+```yaml
+plugins: 
+    - {name: static_map,       type: "costmap_2d::StaticLayer"}
+    - {name: obstacles,        type: "costmap_2d::VoxelLayer"}
+    - {name: inflation,        type: "costmap_2d::InflationLayer"}
+```
+For instance, you can see an example on the local costmap parameters file shown above. In the case of the global costmap, you will usually use these 2 layers:
 
+-   **costmap_2d::StaticLayer**: Used to initialize the costmap from a static map.
+-   **costmap_2d::InflationLayer**: Used to inflate obstacles.
 
-
-
-
-
-
-
-
+You may have noticed that the layers are just being added to the parameters file. That's true. Both in the global and local costmap parameters file, the layers are just added. The specific parameters of these layers are defined in the **common costmap parameters** file. We will have a look at this file later on in the chapter.
 
 
 
@@ -514,7 +525,7 @@ So, by setting the static_map parameter to true, and the rolling_window paramete
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDQ2NDI4MTQsMzUyNTYxMjUwLDEyMD
-IxMzg3NDksLTMyMzIxMjIyMywtMTIxMzM4ODM5NiwxODg3MTY1
-MjMxLC01OTY3NDU4NTFdfQ==
+eyJoaXN0b3J5IjpbMzIxMjgwMDIzLDM1MjU2MTI1MCwxMjAyMT
+M4NzQ5LC0zMjMyMTIyMjMsLTEyMTMzODgzOTYsMTg4NzE2NTIz
+MSwtNTk2NzQ1ODUxXX0=
 -->
