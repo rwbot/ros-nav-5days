@@ -144,7 +144,11 @@ When this node  **receives a goal pose**, it links to components such as the  _g
 
 The move_base node, just as you saw with the slam_gmapping and the amcl nodes in previous chapters, also has parameters that you can modify. For instance, one of the parameters that you can modify is the frequency at which the move_base node sends these velocity commands to the base controller.
 
+---
 
+# The Global Planner
+
+When a new goal is received by the move_base node, this goal is immediately sent to the global planner. Then, the  **global planner is in charge of calculating a safe path in order to arrive at that goal pose**. This path is calculated before the robot starts moving, so it will  **not take into account the readings that the robot sensors are doing** while moving. Each time a new path is planned by the global planner, this path is published into the  **/plan**  topic.
 
 
 
@@ -180,6 +184,6 @@ The move_base node, just as you saw with the slam_gmapping and the amcl nodes in
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMTMzODgzOTYsMTg4NzE2NTIzMSwtNT
-k2NzQ1ODUxXX0=
+eyJoaXN0b3J5IjpbNzU0NTY1ODY5LC0xMjEzMzg4Mzk2LDE4OD
+cxNjUyMzEsLTU5Njc0NTg1MV19
 -->
