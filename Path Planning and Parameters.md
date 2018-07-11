@@ -56,9 +56,12 @@ This is not the only topic that the move_base Action Server provides. As every a
 -   **move_base/status (actionlib_msgs/GoalStatusArray)**
 -   **move_base/result (move_base_msgs/MoveBaseActionResult)**
 
+##### Using this Action Client, move the robot to three different Poses of the Map. When the robot has reached the 3 poses, start over again creating a loop, so that the robot will keep going to these 3 poses over and over.
 
+* **send_goal_client_triangle.py**
+```python
 
-
+```
 
 
 
@@ -98,5 +101,6 @@ This is not the only topic that the move_base Action Server provides. As every a
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4NzE2NTIzMSwtNTk2NzQ1ODUxXX0=
+eyJoaXN0b3J5IjpbLTExMzAzMzQzMDEsMTg4NzE2NTIzMSwtNT
+k2NzQ1ODUxXX0=
 -->
