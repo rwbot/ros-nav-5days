@@ -152,9 +152,13 @@ When a new goal is received by the move_base node, this goal is immediately sent
 
 When you send a goal in order to visualize the path plan made by the global planner, the robot automatically starts executing this plan. This happens because by sending this goal pose, you're starting the whole navigation process.
 
-In some cases, you might be interested in just visualizing the global plan, but not in executing that plan. For this case, the move_base node provides a service named  **/make_plan**. This service allows you to **calculate a global plan without causing the robot to execute the path**. 
+In some cases, you might be interested in just visualizing the global plan, but not in executing that plan. For this case, the move_base node provides a service named  **/make_plan**. This service allows you to **calculate a global plan without causing the robot to execute the path**.  : The type of message used by the /make_plan service is nav_msgs/GetPlan.
 
+**Note 2**: When filing this message in order to call the service, you don't have to fill all of the fields of the message
 
+```
+rosservice call /move_base/make_plan TABTAB
+```
 
 
 
@@ -187,6 +191,6 @@ In some cases, you might be interested in just visualizing the global plan, but 
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMyMzIxMjIyMywtMTIxMzM4ODM5NiwxOD
-g3MTY1MjMxLC01OTY3NDU4NTFdfQ==
+eyJoaXN0b3J5IjpbMjAyMTA3OTg1LC0zMjMyMTIyMjMsLTEyMT
+MzODgzOTYsMTg4NzE2NTIzMSwtNTk2NzQ1ODUxXX0=
 -->
