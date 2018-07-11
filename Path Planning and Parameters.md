@@ -152,13 +152,51 @@ When a new goal is received by the move_base node, this goal is immediately sent
 
 When you send a goal in order to visualize the path plan made by the global planner, the robot automatically starts executing this plan. This happens because by sending this goal pose, you're starting the whole navigation process.
 
-In some cases, you might be interested in just visualizing the global plan, but not in executing that plan. For this case, the move_base node provides a service named  **/make_plan**. This service allows you to **calculate a global plan without causing the robot to execute the path**.  The type of message used by the **/make_plan** service is **nav_msgs/GetPlan**. When filing this message in order to call the service, you don't have to fill all of the fields of the message
+In some cases, you might be interested in just visualizing the global plan, but not in executing that plan. For this case, the move_base node provides a service named  **/make_plan**. This service allows you to **calculate a global plan without causing the robot to execute the path**.  The type of message used by the **/make_plan** service is **nav_msgs/GetPlan**. 
 
 ```
 rosservice call /move_base/make_plan TABTAB
 ```
-
-
+When filing this message in order to call the service, you don't have to fill all of the fields of the message
+```yaml
+rosservice call /move_base/make_plan 
+"start:
+  header:
+    seq: 0
+    stamp:
+      secs: 0
+      nsecs: 0
+    frame_id: 'map'
+  pose:
+    position:
+      x: 1.16
+      y: -4.76
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.75
+      w: 0.69
+goal:
+  header:
+    seq: 0
+    stamp:
+      secs: 0
+      nsecs: 0
+    frame_id: 'map'
+  pose:
+    position:
+      x: 1.16
+      y: -4.50
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.75
+      w: 0.69
+tolerance: 0.0"
+```
+*Response 
 
 
 
@@ -189,6 +227,7 @@ rosservice call /move_base/make_plan TABTAB
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIwMjEzODc0OSwtMzIzMjEyMjIzLC0xMj
-EzMzg4Mzk2LDE4ODcxNjUyMzEsLTU5Njc0NTg1MV19
+eyJoaXN0b3J5IjpbNjAyMjA0NTIxLDEyMDIxMzg3NDksLTMyMz
+IxMjIyMywtMTIxMzM4ODM5NiwxODg3MTY1MjMxLC01OTY3NDU4
+NTFdfQ==
 -->
