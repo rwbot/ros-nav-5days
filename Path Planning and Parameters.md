@@ -150,7 +150,9 @@ The move_base node, just as you saw with the slam_gmapping and the amcl nodes in
 
 When a new goal is received by the move_base node, this goal is immediately sent to the global planner. Then, the  **global planner is in charge of calculating a safe path in order to arrive at that goal pose**. This path is calculated before the robot starts moving, so it will  **not take into account the readings that the robot sensors are doing** while moving. Each time a new path is planned by the global planner, this path is published into the  **/plan**  topic.
 
+When you send a goal in order to visualize the path plan made by the global planner, the robot automatically starts executing this plan. This happens because by sending this goal pose, you're starting the whole navigation process.
 
+In some cases, you might be interested in just visualizing the global plan, but not in executing that plan. For this case, the move_base node provides a service named  **/make_plan**. This service allows you to calculate a global plan without causing the robot to execute the path. Let's check how it works with the next exercise.
 
 
 
@@ -184,6 +186,6 @@ When a new goal is received by the move_base node, this goal is immediately sent
 
 #
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzU0NTY1ODY5LC0xMjEzMzg4Mzk2LDE4OD
-cxNjUyMzEsLTU5Njc0NTg1MV19
+eyJoaXN0b3J5IjpbLTkyNjE3MTQ3MywtMTIxMzM4ODM5NiwxOD
+g3MTY1MjMxLC01OTY3NDU4NTFdfQ==
 -->
