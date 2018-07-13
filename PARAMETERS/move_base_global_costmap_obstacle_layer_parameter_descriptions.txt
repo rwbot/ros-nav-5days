@@ -1,0 +1,181 @@
+groups: 
+  - 
+    name: "Default"
+    type: ''
+    parameters: 
+      - 
+        name: "enabled"
+        type: "bool"
+        level: 0
+        description: "Whether to use this plugin or not"
+        edit_method: ''
+      - 
+        name: "footprint_clearing_enabled"
+        type: "bool"
+        level: 0
+        description: "Whether to clear the robot's footprint of lethal obstacles"
+        edit_method: ''
+      - 
+        name: "max_obstacle_height"
+        type: "double"
+        level: 0
+        description: "Max Obstacle Height"
+        edit_method: ''
+      - 
+        name: "origin_z"
+        type: "double"
+        level: 0
+        description: "The z origin of the map in meters."
+        edit_method: ''
+      - 
+        name: "z_resolution"
+        type: "double"
+        level: 0
+        description: "The z resolution of the map in meters/cell."
+        edit_method: ''
+      - 
+        name: "z_voxels"
+        type: "int"
+        level: 0
+        description: "The number of voxels to in each vertical column."
+        edit_method: ''
+      - 
+        name: "unknown_threshold"
+        type: "int"
+        level: 0
+        description: "The number of unknown cells allowed in a column considered to be known"
+        edit_method: ''
+      - 
+        name: "mark_threshold"
+        type: "int"
+        level: 0
+        description: "The maximum number of marked cells allowed in a column considered to be free"
+        edit_method: ''
+      - 
+        name: "combination_method"
+        type: "int"
+        level: 0
+        description: "Method for combining two layers"
+        edit_method: "{'enum_description': 'Method for combining layers enum', 'enum': [{'srcline': 16,\
+  \ 'description': 'b', 'srcfile': '/tmp/binarydeb/ros-kinetic-costmap-2d-1.14.3/cfg/VoxelPlugin.cfg',\
+  \ 'cconsttype': 'const int', 'value': 0, 'ctype': 'int', 'type': 'int', 'name':\
+  \ 'Overwrite'}, {'srcline': 17, 'description': 'a', 'srcfile': '/tmp/binarydeb/ros-kinetic-costmap-2d-1.14.3/cfg/VoxelPlugin.cfg',\
+  \ 'cconsttype': 'const int', 'value': 1, 'ctype': 'int', 'type': 'int', 'name':\
+  \ 'Maximum'}]}"
+    parent: 0
+    id: 0
+max: 
+  bools: 
+    - 
+      name: "enabled"
+      value: True
+    - 
+      name: "footprint_clearing_enabled"
+      value: True
+  ints: 
+    - 
+      name: "z_voxels"
+      value: 16
+    - 
+      name: "unknown_threshold"
+      value: 16
+    - 
+      name: "mark_threshold"
+      value: 16
+    - 
+      name: "combination_method"
+      value: 2
+  strs: []
+  doubles: 
+    - 
+      name: "max_obstacle_height"
+      value: 50.0
+    - 
+      name: "origin_z"
+      value: inf
+    - 
+      name: "z_resolution"
+      value: 50.0
+  groups: 
+    - 
+      name: "Default"
+      state: True
+      id: 0
+      parent: 0
+min: 
+  bools: 
+    - 
+      name: "enabled"
+      value: False
+    - 
+      name: "footprint_clearing_enabled"
+      value: False
+  ints: 
+    - 
+      name: "z_voxels"
+      value: 0
+    - 
+      name: "unknown_threshold"
+      value: 0
+    - 
+      name: "mark_threshold"
+      value: 0
+    - 
+      name: "combination_method"
+      value: 0
+  strs: []
+  doubles: 
+    - 
+      name: "max_obstacle_height"
+      value: 0.0
+    - 
+      name: "origin_z"
+      value: 0.0
+    - 
+      name: "z_resolution"
+      value: 0.0
+  groups: 
+    - 
+      name: "Default"
+      state: True
+      id: 0
+      parent: 0
+dflt: 
+  bools: 
+    - 
+      name: "enabled"
+      value: True
+    - 
+      name: "footprint_clearing_enabled"
+      value: True
+  ints: 
+    - 
+      name: "z_voxels"
+      value: 10
+    - 
+      name: "unknown_threshold"
+      value: 15
+    - 
+      name: "mark_threshold"
+      value: 0
+    - 
+      name: "combination_method"
+      value: 1
+  strs: []
+  doubles: 
+    - 
+      name: "max_obstacle_height"
+      value: 2.0
+    - 
+      name: "origin_z"
+      value: 0.0
+    - 
+      name: "z_resolution"
+      value: 0.2
+  groups: 
+    - 
+      name: "Default"
+      state: True
+      id: 0
+      parent: 0
+---

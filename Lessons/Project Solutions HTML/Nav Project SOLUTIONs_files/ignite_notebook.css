@@ -1,0 +1,88 @@
+/* Changes for notebook in Robot Ignite */
+#header{
+    /*display: none !important;*/
+}
+#run_int{
+    top: 50px;
+    right: 0px;
+    position: fixed;
+}
+#run_int > .btn{
+    display: block;
+    float: none;
+    width: 100%;
+    max-width: 100%;
+}
+#run_int > button{
+    width: 20px;
+    background-color: #21272A;
+    color: white;
+    border: 1px solid #BABABA;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    padding: 0px 3px 0px 3px;
+    margin: 0;
+    border-radius: 0.5em;
+}
+#run_int > button:hover{
+   background-color: #949ba2;
+}
+.rendered_html h1{
+    color: #8F9D6A !important;
+}
+.rendered_html h1,
+.rendered_html h2,
+.rendered_html h3,
+.rendered_html th,
+.rendered_html p
+{
+    font-family: 'Oxygen', sans-serif !important;
+    font-weight: normal;
+}
+#notebook-container{
+    background-color: #ECEFF4;
+}
+.notebook_app, body > #header{
+    background-color: transparent;
+}
+.ign_color{
+    color: #8F9D6A;
+}
+#nbp-app-btn{
+    display: none;
+}
+#nbp-present-btn{
+    display: none;
+}
+/*
+div.text_cell_render{
+    color: white;
+}
+a:hover{
+    color: #EE9222;
+}
+.ign_red{
+    color: black;
+    font-weight: bold;
+}
+.ign_green{
+    color: #8F9D6A;
+    font-weight: bold;
+}
+.ign_blue{
+    color: #CDA869;
+    font-weight: bold;
+}
+.transparent{
+    background-color: #464952;
+}
+div.input_prompt{
+    color: black;
+}
+.float_l{
+    float: left;
+}
+.white_bg{
+    background-color: white;
+}
+*/

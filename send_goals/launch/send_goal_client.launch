@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="send_goals" type="send_goal_client.py" name="move_base_action_client" output="screen">
+    </node>
+</launch>

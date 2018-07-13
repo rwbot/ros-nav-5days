@@ -1,0 +1,23 @@
+bools: 
+  - 
+    name: "enabled"
+    value: True
+  - 
+    name: "inflate_unknown"
+    value: False
+ints: []
+strs: []
+doubles: 
+  - 
+    name: "cost_scaling_factor"
+    value: 5.0
+  - 
+    name: "inflation_radius"
+    value: 0.5
+groups: 
+  - 
+    name: "Default"
+    state: True
+    id: 0
+    parent: 0
+---

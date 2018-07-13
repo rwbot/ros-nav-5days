@@ -1,0 +1,44 @@
+bools: []
+ints: 
+  - 
+    name: "width"
+    value: 10
+  - 
+    name: "height"
+    value: 10
+strs: 
+  - 
+    name: "footprint"
+    value: "[]"
+doubles: 
+  - 
+    name: "transform_tolerance"
+    value: 0.5
+  - 
+    name: "update_frequency"
+    value: 1.0
+  - 
+    name: "publish_frequency"
+    value: 0.5
+  - 
+    name: "resolution"
+    value: 0.05
+  - 
+    name: "origin_x"
+    value: 0.0
+  - 
+    name: "origin_y"
+    value: 0.0
+  - 
+    name: "robot_radius"
+    value: 0.2
+  - 
+    name: "footprint_padding"
+    value: 0.01
+groups: 
+  - 
+    name: "Default"
+    state: True
+    id: 0
+    parent: 0
+---

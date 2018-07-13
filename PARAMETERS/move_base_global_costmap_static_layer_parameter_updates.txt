@@ -1,0 +1,14 @@
+bools: 
+  - 
+    name: "enabled"
+    value: True
+ints: []
+strs: []
+doubles: []
+groups: 
+  - 
+    name: "Default"
+    state: True
+    id: 0
+    parent: 0
+---
